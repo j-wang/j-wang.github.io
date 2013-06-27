@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://j-wang.github.io/sitemap.xml 
+Sitemap: http://j-wang.net/sitemap.xml 

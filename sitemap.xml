@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://j-wang.github.io/blog/archives/</loc>
+        <loc>http://j-wang.net/blog/archives/</loc>
         <lastmod>2013-06-27T00:16:22-04:00</lastmod>
     </url>
     <url>
-        <loc>http://j-wang.github.io/</loc>
+        <loc>http://j-wang.net/</loc>
         <lastmod>2013-06-27T00:16:22-04:00</lastmod>
     </url>
     <url>
-        <loc>http://j-wang.github.io/robots.txt</loc>
+        <loc>http://j-wang.net/robots.txt</loc>
         <lastmod>2013-06-27T00:16:22-04:00</lastmod>
     </url>
 </urlset>
