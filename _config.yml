@@ -2,10 +2,10 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://j-wang.github.io
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+url: http://j-wang.net
+title: James's Blog
+subtitle: Cooking, Coding, Creating, and Caring
+author: James Wang
 simple_search: http://google.com/search
 description:
 
