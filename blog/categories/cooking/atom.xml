@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: cooking | James's Blog]]></title>
+  <link href="http://j-wang.net/blog/categories/cooking/atom.xml" rel="self"/>
+  <link href="http://j-wang.net/"/>
+  <updated>2013-07-01T03:15:06-04:00</updated>
+  <id>http://j-wang.net/</id>
+  <author>
+    <name><![CDATA[James Wang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Sous Vide Porchetta]]></title>
+    <link href="http://j-wang.net/blog/2012/10/06/sous-vide-porchetta/"/>
+    <updated>2012-10-06T00:00:00-04:00</updated>
+    <id>http://j-wang.net/blog/2012/10/06/sous-vide-porchetta</id>
+    <content type="html"><![CDATA[<p>One thing that has bothered me about all of my experimentation with sous vide cooking is that everything that I&rsquo;ve done could technically be done with normal cooking methods. Despite making the best chicken, steak, and poached eggs (or the only poached eggs) that I&rsquo;ve ever made, it was possible for me to still cook this food with more conventional methods. I wanted something that is largely unachievable with any other method.</p>
+
+<p>Enter the deep-fried porchetta, which I was inspired to make from <a href="http://www.seriouseats.com/2011/12/the-food-lab-deep-fried-sous-vide-36-hour-all-belly-porchetta.html?ref=search">this recipe</a></p>
+
+<p>It pretty much captures <a href="/blog/2012/01/29/theory-of-sous-vide/">what I love</a> about sous vide &mdash; the ability to separate sterilizing food from creating the texture of food. Porchetta is hard because it&rsquo;s difficult to fully cook the meat, keep the inside tender, and make the outside crispy (but not dry) all at the same time. That&rsquo;s because there&rsquo;s only one blunt object method of cooking it used (dry heat blasted outside in). Here, we can elegantly separate the parts (sterilization and tenderizing, vs. crisping&hellip; or deep-frying) by using separate cooking techniques, the key ones being sous vide and deep-frying. I couldn&rsquo;t wait to try it.</p>
+
+<!-- more -->
+
+
+<p>Because this thing was going to need to run overnight, I didn&rsquo;t want to chance burning down my apartment with my homemade sous vide machine. I figured I made enough food with sous vide that it would be worth it to finally spring for a real immersion circulator (Williams-Sonoma&rsquo;s Sous Vide Professional, after deciding that it was too much trouble making sure used lab circulators on Ebay didn&rsquo;t have deadly residue).</p>
+
+<p>The recipe above calls for pork belly, but I didn&rsquo;t want to do pork belly. I couldn&rsquo;t find it at my local butcher (&hellip; Stop-and-Shop) and I make food to eat over many meals. Pork belly would be too rich and would become painful to continue eating relatively quickly (it&rsquo;s quite far past the <a href="http://www.nytimes.com/2009/06/23/health/23well.html?_r=0">bliss point</a>). Instead, I chose to go with 10lbs of skin-on pork shoulder, which I got tied and scored at Stop-and-Shop (it&rsquo;s important to get it tied &mdash; refuse to get it scored if you must, but the thing will fall apart on you if you don&rsquo;t have extra support from the ties).&nbsp;I figured it was a bit of a waste to go much smaller, since I&rsquo;d still have the fixed cost of going through all the steps of making this thing regardless of how big it was. As it turns out, if I went smaller, I might have ended up with less oil burns and less stress trying to manhandle a massive hunk of hot pork, but hindsight is 20/20&hellip;</p>
+
+<div align='center'><div align='center'><span class='caption-wrapper'><img class='caption' src='/images/posts/IMG_9462.JPG' width='' height='' alt='The pork shoulder fresh from the store. Looks far smaller at this distance than it feels trying to move it while hot.' title='The pork shoulder fresh from the store. Looks far smaller at this distance than it feels trying to move it while hot.'><span class='caption-text'>The pork shoulder fresh from the store. Looks far smaller at this distance than it feels trying to move it while hot.</span></span></div></div>
+
+
+<p>After getting it back from the store, I prepared the spice blend I wanted to use (toasted fennel seed, black pepper, sage, rosemary, thyme, and crushed red pepper &mdash; I wanted to go with fennel pollen, but I took a look at the expense and decided maybe another time). The toasted fennel seed and black pepper mix gets pretty aromatic when you&rsquo;re making it, which is great. Make sure you don&rsquo;t use oil though, since it&rsquo;s meant to toast dry. After toasting the seeds and peppers on the stove until deep brown, I blended them and coated them onto the shoulder, along with the other spices.</p>
+
+<div align='center'><div align='center'><span class='caption-wrapper'><img class='caption' src='/images/posts/IMG_9474.JPG' width='' height='' alt='Adding spices. Make sure to get it into the crevices and into the butterfly cut (if you actually got it -- I didn't here because I wanted to just go with the pre-tied meat). It's literally painful to tie your own meat if you're bad at slipknots (like I am).' title='Adding spices. Make sure to get it into the crevices and into the butterfly cut (if you actually got it -- I didn't here because I wanted to just go with the pre-tied meat). It's literally painful to tie your own meat if you're bad at slipknots (like I am).'><span class='caption-text'>Adding spices. Make sure to get it into the crevices and into the butterfly cut (if you actually got it -- I didn't here because I wanted to just go with the pre-tied meat). It's literally painful to tie your own meat if you're bad at slipknots (like I am).</span></span></div></div>
+
+
+
+
+<div align='center'><div align='center'><span class='caption-wrapper'><img class='caption' src='/images/posts/IMG_9510.JPG' width='' height='' alt='Salt is also important. Even if you're worried about salt, most of it is going to "wash off" with the liquids that come out of the meat during cooking.' title='Salt is also important. Even if you're worried about salt, most of it is going to "wash off" with the liquids that come out of the meat during cooking.'><span class='caption-text'>Salt is also important. Even if you're worried about salt, most of it is going to "wash off" with the liquids that come out of the meat during cooking.</span></span></div></div>
+
+
+
+
+<div align='center'><div align='center'><span class='caption-wrapper'><img class='caption' src='/images/posts/IMG_9587.JPG' width='' height='' alt='The finished product. Well, raw finished product.' title='The finished product. Well, raw finished product.'><span class='caption-text'>The finished product. Well, raw finished product.</span></span></div></div>
+
+
+<p>After patting the meat down well with spices and salt, I just needed to load it into the sous vide and used a jumbo hefty bag (2.5 gallons) as my &ldquo;vacuum bag.&rdquo; It was far more painful than the picture suggests given the size of this thing and the logistics of trying to load a 10 pound pork shoulder with one hand and keep the bag open with the other. Additionally, the hefty bag leaks slightly, which was annoying for me and could be even more problematic for you if you chose to buy one of those potentially deadly immersion circulators from Ebay. Prior to this episode, I always used simple ziplock bags, which basically work as well as vacuum seal bags for most applications and can actually handle liquids (which get sucked out by normal vacuum sealers, unless you spring for a chamber vacuum). If you lower a ziplock bag into warm-to-hot water, the pressure from the water (more heat = more molecular movement/bouncing) pushes out the air.</p>
+
+<p>After this episode, I&rsquo;ve moved on to bulk vacuum seal bags (really big ones and 200 ft of them) bought from an online restaurant supply store to be used with a simple Foodsaver vacuum (which Liz got practically for free from a thrift store). But again, that&rsquo;s not to say that the simple technique doesn&rsquo;t work, which I want to emphasize because I&rsquo;ve heard from some people that the cost of the equipment deters them from cooking sous vide. If it wasn&rsquo;t for the fact that I&rsquo;d make porchetta again and was able to obtain the necessary equipment on the cheap, I&rsquo;d probably still be using ziplock bags.</p>
+
+<div align='center'><div align='center'><span class='caption-wrapper'><img class='caption' src='/images/posts/IMG_9630.JPG' width='' height='' alt='This looks far smoother than it actually went.' title='This looks far smoother than it actually went.'><span class='caption-text'>This looks far smoother than it actually went.</span></span></div></div>
+
+
+
+
+<div align='center'><div align='center'><span class='caption-wrapper'><img class='caption' src='/images/posts/IMG_9723.JPG' width='' height='' alt='Looks tranquil in there.' title='Looks tranquil in there.'><span class='caption-text'>Looks tranquil in there.</span></span></div></div>
+
+
+<p>The recipe calls for 155 degrees F for 36 hours but I didn&rsquo;t want to wait that long. I squinted at bit at the pasteurization curves for meat and figured out that 165 degrees F for 24 hours would suffice instead to sterilize the pork. I expected that the temperature difference wouldn&rsquo;t have much of an adverse effect on the texture either.</p>
+
+<p>When 24 hours finally passed, it was time to deep fry. I went with the recipe&rsquo;s suggestion to use a wok with oil (I used canola because of its high smoke point, relative healthiness, and price), since my thift-store deep-fryer isn&rsquo;t big enough and while I was fine with sous vide cooking with it, I&rsquo;m not confident enough in it to go high-temp with oil.</p>
+
+<div align='center'><div align='center'><span class='caption-wrapper'><img class='caption' src='/images/posts/IMG_9769.JPG' width='' height='' alt='Pouring the canola oil. I suppose you can also call it a bit of inadvertent product placement for S&amp;S.' title='Pouring the canola oil. I suppose you can also call it a bit of inadvertent product placement for S&amp;S.'><span class='caption-text'>Pouring the canola oil. I suppose you can also call it a bit of inadvertent product placement for S&amp;S.</span></span></div></div>
+
+
+
+
+<div align='center'><div align='center'><span class='caption-wrapper'><img class='caption' src='/images/posts/IMG_9780.JPG' width='' height='' alt='Looking for 300 to 350 degrees F. If you're waiting for 400, you'll blow past it since the temperature increase accelerates as you wait.' title='Looking for 300 to 350 degrees F. If you're waiting for 400, you'll blow past it since the temperature increase accelerates as you wait.'><span class='caption-text'>Looking for 300 to 350 degrees F. If you're waiting for 400, you'll blow past it since the temperature increase accelerates as you wait.</span></span></div></div>
+
+
+<p>Dropping the thing into the wok was somewhat painful. I think I need rubber gloves since although the shoulder was cooked at sub-boiling temperatures, it is still really hot for bare hands. I first poured off the juice/sauce/drippings into a bowl for gravy later and (for lack of better tools) grabbed the pork with my hands and manhandled it into the wok. It made a nice dual oil splash from the impact and the contact of residual moisture with the oil. I would suggest getting rubber gloves.</p>
+
+<div align='center'><div align='center'><span class='caption-wrapper'><img class='caption' src='/images/posts/IMG_9796.JPG' width='' height='' alt='Splattering away. Holding the thermometer while ladling hot oil over the top of the porchetta, as per the recipe. Note that metal candy thermometers get hot as you hold it in boiling oil.' title='Splattering away. Holding the thermometer while ladling hot oil over the top of the porchetta, as per the recipe. Note that metal candy thermometers get hot as you hold it in boiling oil.'><span class='caption-text'>Splattering away. Holding the thermometer while ladling hot oil over the top of the porchetta, as per the recipe. Note that metal candy thermometers get hot as you hold it in boiling oil.</span></span></div></div>
+
+
+<p>Despite the pain, I&rsquo;d say the end results were worth it. When it was done, this thing was tender enough that one of the bones slid out on its own accord. But that&rsquo;s not even the best thing. Take a look at the skin.</p>
+
+<div align='center'><div align='center'><span class='caption-wrapper'><img class='caption' src='/images/posts/IMG_9904.JPG' width='' height='' alt='You can practically hear the crisp in this picture.' title='You can practically hear the crisp in this picture.'><span class='caption-text'>You can practically hear the crisp in this picture.</span></span></div></div>
+
+
+
+
+<div align='center'><div align='center'><span class='caption-wrapper'><img class='caption' src='/images/posts/IMG_9908.JPG' width='' height='' alt='As delicious as it looks. The meat the bottom came out with the bone when it slid out of the porchetta.' title='As delicious as it looks. The meat the bottom came out with the bone when it slid out of the porchetta.'><span class='caption-text'>As delicious as it looks. The meat the bottom came out with the bone when it slid out of the porchetta.</span></span></div></div>
+
+
+<p>This experiment was definitely worth it and I&rsquo;ll be doing it again. The only problem is that it&rsquo;s hard to eat much porchetta in one sitting, but I suppose that I did want to get a lot of meals out of it&hellip;</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Theory of Sous Vide]]></title>
+    <link href="http://j-wang.net/blog/2012/01/29/theory-of-sous-vide/"/>
+    <updated>2012-01-29T00:00:00-05:00</updated>
+    <id>http://j-wang.net/blog/2012/01/29/theory-of-sous-vide</id>
+    <content type="html"><![CDATA[<p>This post gets a bit technical and geeky, but I think understanding the theory of cooking is pretty important to cooking well (and consistently). And I can&rsquo;t stop talking about to people in person anyway, so what the heck.</p>
+
+<p>I&rsquo;ve experimented with a lot of different cooking techniques over time (clay bakers, pressure cookers, etc.), but nothing has really excited me as much as sous vide. What I really love about sous vide is that it lets you very cleanly separate the two essential goals of cooking:</p>
+
+<ol>
+<li>Sterilization of food</li>
+<li>Tenderizing/texturizing food</li>
+</ol>
+
+
+<!-- more -->
+
+
+<p>Now, what is it? Sous vide is a cooking technique that aims to evenly cook food through bringing it to a very precisely controlled, even temperature. How it is literally implemented is through placing food in vacuum sealed plastic bags, which are then placed in temperature-controlled water. Vacuum sealing (or, as I prefer, ziplock bagging and pressing out the air) is necessary in order to expose the food to the water more directly. Air is a pretty good insulator, so if it was in between the water and the food, it would prevent the food from getting to the temperature you want it to get to. The water is there because it has a&nbsp;very high specific heat, so it takes a lot of energy to change its temperature. This means it can keep a stable temperature and hold large amount of energy for transfer.</p>
+
+<p>So, what&rsquo;s so great about this? Well, normally, most cooking techniques just blast heat at food in the attempt to sterilize it and give it an appealing texture. Unfortunately, these two goals are often at crossed purposes. To be safe, we normally heat food to a temperature that instantly kills the bacteria we&rsquo;re worried about &mdash; this ensures that it&rsquo;s safe, but often at the cost of taste and texture.&nbsp;Anyone who&rsquo;s eaten a very dry steak can tell you that absolutely-safely-cooked steak is not necessarily tasty steak.</p>
+
+<p>Normally, it&rsquo;s a bit of an iffy proposition when skewing beneath the instant-kill temperature. Bacteria actually die off at lower temperatures than the recommended temperatures we&rsquo;re familiar with (160 &ndash; 165 degrees F for pork, and chicken, 145 degrees F for steak), but they do so gradually. If you cook at lower temperatures, safety requires good timing, which becomes potentially dangerous enough in the wrong hands that the FDA just always cites instant-kill temperatures.</p>
+
+<p>With sous vide, you take the art (and potential food poisoning) out of the picture and add scientific precision. Sous vide machines are usually accurate enough that you know precisely what temperature the food has been at, and then it becomes a simple matter of looking up the amount of time to get to safety on a food pasteurization table. From there, you can have completely safe food (without blasted and barren texture), which, if you want more flavor/texture, you can apply judiciously without the necessity of hitting instant-kill temperature. For example, browning adds flavor through the mallaird reaction (which doesn&rsquo;t happen in sous vide). You can either use a food torch or just toss the steak/chicken/whatever onto a hot pan for a few seconds, keeping the internal texture while getting the browning. You can do sous vide with anything (even just a pot of water, a stove, thermometer, and a lot of patience), but in general machine controlled is better. I recently got a deep fryer at an estate sale that I&rsquo;m not confident in deep-frying in, but can heat water and sous vide with. Unfortunately, the low end of its temperature is still rather high (for sous vide) so I&rsquo;ll probably be experimenting with putting together my own setup soon.</p>
+]]></content>
+  </entry>
+  
+</feed>

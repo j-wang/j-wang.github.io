@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: valentine's day | James's Blog]]></title>
+  <link href="http://j-wang.net/blog/categories/valentines-day/atom.xml" rel="self"/>
+  <link href="http://j-wang.net/"/>
+  <updated>2013-07-01T03:15:06-04:00</updated>
+  <id>http://j-wang.net/</id>
+  <author>
+    <name><![CDATA[James Wang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Raspberry Pi for Valentine's Day]]></title>
+    <link href="http://j-wang.net/blog/2013/02/22/raspberry-pi-for-valentines-day/"/>
+    <updated>2013-02-22T00:00:00-05:00</updated>
+    <id>http://j-wang.net/blog/2013/02/22/raspberry-pi-for-valentines-day</id>
+    <content type="html"><![CDATA[<p>For Valentine&rsquo;s Day, I surprised Liz with an iPad Mini. We were selling her current Macbook Air because it just didn&rsquo;t have the power to run Solidworks, Autocad, and other technical programs she&rsquo;d soon need for her engineering/design classes. However, she attached a fair amount of sentimental value to that particular Macbook Air (it was another surprise gift from me). I figured I&rsquo;d at least update the sentimental value with the iPad because it filled her need for a portable device and she had liked the Mini when we visited an Apple Store recently.</p>
+
+<p>For her gift, she surprised me with a Raspberry Pi. In a pie.</p>
+
+<p>Apparently, she had searched for a good &ldquo;pie proxy&rdquo; as a presentation tool for the Raspberry Pi but eventually, for lack of a better option, settled on an actual pie (blueberry, but close enough). I don&rsquo;t have a picture of the pie, unfortunately, but I do have a picture of the blueberry stained box, which I vacuum sealed afterwards in case I needed any of the numbers on it (it&rsquo;d otherwise be sticky and good luck cleaning off the box without destroying it).</p>
+
+<div align='center'><div align='center' style='width: 310px;'><span class='caption-wrapper'><img class='caption' src='/images/posts/raspberry_pi.jpg' width='' height='' alt='I suppose this might have been a problem if I needed to return it.' title='I suppose this might have been a problem if I needed to return it.'><span class='caption-text'>I suppose this might have been a problem if I needed to return it.</span></span></div></div>
+
+
+<p>I suppose we&rsquo;re a bit of an odd couple, but I wouldn&rsquo;t have it any other way.</p>
+]]></content>
+  </entry>
+  
+</feed>
