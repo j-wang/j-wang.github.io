@@ -1,0 +1,20 @@
+---
+layout: post
+name: strange-prank-idea
+title: Strange Prank Idea
+time: 2013-03-18 19:49:00.000000000 -04:00
+comments: true
+---
+Liz and I were recently up in Philly when I got an idea for a prank that I'm a couple years too old for at this point. Liz got into UPenn's Integrated Product Design master's program last week, so we were visiting the city and school to get a sense of whether or not she'd like the program.
+
+At one point, going around the city, we saw this statue very prominently stationed at an intersection.
+<div align="center" style="text-align: center;">{% imgcap /images/posts/maybe_socrates.jpg Deep thought. %}</div>
+<!-- more -->
+
+It kind of looked like it was supposed to be Socrates or something. However, the odd thing was how worn it was. The features were extremely indistinct and it kind of looked like someone had sandblasted it. I doubt that its appearance was caused by the wear of time, since it didn't look that old. In reality, some sculptor had probably decided that this was an interesting (if odd) style.
+
+Now, even though it probably wasn't how it actually got this way, what if someone did&nbsp;sandblast (or sandpaper) it and just left it in this state?
+
+Then, I got to thinking -- how baffling and strange a prank would it be to find a statue and in the middle of the night sand it down? I'm imagining stone statues, wooden cigar store Indians, or one of those foam statues of famous characters sometimes in front of video/comic book stores beckoning you in. You would leave it recognizable, but just make the features indistinct. Make it fuzzy. Then, after doing the deed, you would clean away the dust to make it look like nothing ever happened. I would imagine, for at least a few seconds, maybe up to a minute, someone familiar with the statue would go up to it and be completely baffled, trying (and perhaps failing) to comprehend what happened. A true epistemological mystery. The idea of bafflement and people trying to figure out what happened, along with the pure physical difficulty in executing the prank (partially what makes it so unthinkable), is what makes this so amusing to me. After all, I was baffled myself with this statue and it probably isn't even what happened here.
+
+As said, I'm too old for this since this is more of a college kid type of thing (especially since it might be a LONG night of sandpapering). Though, admittedly, even when I was in college I likely wouldn't have done this, since I think I'd feel bad for whoever created the statue and for those who actually liked it (unless the statue was really bad). Thinking about it did give me a moment of devious (philosophical) amusement though.

@@ -10,6 +10,8 @@ I only started this log last week, but figured it would be helpful to start trac
 
 This is more of an experiemental idea right now, but if it works out well, I'll try to post these at the end of each week.
 
+<!-- more -->
+
 21 Jun 2013
 --------------------
 - Completed TicTacToe AI with real minimax in Python; always wins or ties. I previously created one that used a depth-based weighting system (the fewer moves it takes to reach a win/loss state and get close to a victory, the higher the "score"), but it sometimes did stupid things. To be fair, it didn't do stupid things that often, but considering the game is solveable, I figured I might as well solve it.  [Link to github repo here.](https://github.com/j-wang/tictactoe_ai)
