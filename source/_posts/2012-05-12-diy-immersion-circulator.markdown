@@ -8,9 +8,9 @@ categories: [hardware hacking, food science, sous vide]
 ---
 For a few months now, I've been using a $25 deep fryer I found at an estate sale to cook sous vide. It has a bit of a crack and is somewhat old, so I'd probably hesitate using it for real deep frying, but I wasn't intending to deep fry with it anyway.
 
-<div align='center'><div align='center'>{% imgcap /images/posts/deep_fryer.jpg This thing was definitely a steal for the price... though maybe not for someone who actually wanted to do some deep frying -- you'd have to factor in potential medical bills. Not good enough. %}</div></div>
+<div align='center'><div align='center'>{% imgcap /images/posts/deep_fryer.jpg This thing was definitely a steal for the price... though maybe not for someone who actually wanted to do some deep frying -- you'd have to factor in potential medical bills. %}</div></div>
 
-It has a built-in thermocouple, has a nice metal basket with handle to pull the heated food out when done, and already has its own (powerful) heating element -- essentially it has all the components necessary for a good sous vide machine. I even tested its temperature accuracy against a trustworthy thermometer and it came out pretty close. What could be better?
+It has a built-in thermocouple, has a nice metal basket with handle to pull the heated food out when done, and already has its own (powerful) heating element -- essentially it has all the components necessary for a good sous vide machine. I even tested its temperature accuracy against a trustworthy thermometer and it came out pretty close. What could be better? (Spoiler alert: There is something much better.)
 
 <!-- more -->
 
