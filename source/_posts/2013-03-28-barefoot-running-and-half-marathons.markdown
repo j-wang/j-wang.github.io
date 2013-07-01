@@ -9,7 +9,7 @@ I've been "barefoot running" now for about a year at this point. Overall, I thin
 
 While some people get into barefoot running because they've read about the [Tarahumara](http://en.wikipedia.org/wiki/Tarahumara_people), decided it's the secret behind African Olympic success in running, or heard some interesting biomechanical or evolutionary argument, I admit that I primarily got into it because the shoes are more compact and easier to carry in my work bag (my company has a gym). Given that benefit, I decided I'd just hope that some of the other touted benefits were true.
 
-<div align='center'>{% imgcap /images/posts/vibrams.jpg My Vibram Fivefingers. These squish a lot better than running shoes. %}</div>
+<div align='center'>{% imgcap /images/posts/vibrams.JPG My Vibram Fivefingers. These squish a lot better than running shoes. %}</div>
 <!-- more -->
 
 One lesson that I would impart on those who might be interested in also trying out barefoot running is to take it slow. For instance, no matter what you do, don't make your first major experience barefoot running your first time running a half-marathon. If you do, you might look like this guy:
