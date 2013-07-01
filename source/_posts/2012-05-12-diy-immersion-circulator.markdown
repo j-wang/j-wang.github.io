@@ -4,6 +4,7 @@ name: diy-immersion-circulator
 title: DIY Immersion Circulator
 time: 2012-05-12 20:07:00.000000000 -04:00
 comments: true
+categories: [hardware hacking, food science, sous vide]
 ---
 For a few months now, I've been using a $25 deep fryer I found at an estate sale to cook sous vide. It has a bit of a crack and is somewhat old, so I'd probably hesitate using it for real deep frying, but I wasn't intending to deep fry with it anyway.
 

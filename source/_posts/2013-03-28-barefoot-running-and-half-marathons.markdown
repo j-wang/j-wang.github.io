@@ -4,6 +4,7 @@ name: barefoot-running-and-half-marathons
 title: Barefoot Running and Half Marathons
 time: 2013-03-28 01:02:00.000000000 -04:00
 comments: true
+categories: [fitness, running]
 ---
 I've been "barefoot running" now for about a year at this point. Overall, I think the results have been better than expected -- though my original expectations were pretty low.
 

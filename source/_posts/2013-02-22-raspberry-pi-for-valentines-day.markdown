@@ -4,6 +4,7 @@ name: raspberry-pi-for-valentines-day
 title: Raspberry Pi for Valentine's Day
 time: 2013-02-22 18:55:00.000000000 -05:00
 comments: true
+categories: [valentine's day, hardware hacking]
 ---
 For Valentine's Day, I surprised Liz with an iPad Mini. We were selling her current Macbook Air because it just didn't have the power to run Solidworks, Autocad, and other technical programs she'd soon need for her engineering/design classes. However, she attached a fair amount of sentimental value to that particular Macbook Air (it was another surprise gift from me). I figured I'd at least update the sentimental value with the iPad because it filled her need for a portable device and she had liked the Mini when we visited an Apple Store recently.
 

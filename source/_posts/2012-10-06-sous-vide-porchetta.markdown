@@ -4,6 +4,7 @@ name: sous-vide-porchetta
 title: Sous Vide Porchetta
 time: 2012-10-06 21:48:00.000000000 -04:00
 comments: true
+categories: [sous vide, cooking]
 ---
 One thing that has bothered me about all of my experimentation with sous vide cooking is that everything that I've done could technically be done with normal cooking methods. Despite making the best chicken, steak, and poached eggs (or the only poached eggs) that I've ever made, it was possible for me to still cook this food with more conventional methods. I wanted something that is largely unachievable with any other method.
 

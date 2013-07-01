@@ -4,6 +4,7 @@ name: strange-prank-idea
 title: Strange Prank Idea
 time: 2013-03-18 19:49:00.000000000 -04:00
 comments: true
+categories: fun
 ---
 Liz and I were recently up in Philly when I got an idea for a prank that I'm a couple years too old for at this point. Liz got into UPenn's Integrated Product Design master's program last week, so we were visiting the city and school to get a sense of whether or not she'd like the program.
 

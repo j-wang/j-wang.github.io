@@ -4,6 +4,7 @@ name: theory-of-sous-vide
 title: Theory of Sous Vide
 time: 2012-01-29 01:38:00.000000000 -05:00
 comments: true
+categories: [food science, sous vide, cooking]
 ---
 This post gets a bit technical and geeky, but I think understanding the theory of cooking is pretty important to cooking well (and consistently). And I can't stop talking about to people in person anyway, so what the heck.
 
