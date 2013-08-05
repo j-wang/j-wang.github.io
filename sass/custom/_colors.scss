@@ -2,8 +2,10 @@
 // To give it a try, uncomment some of the lines below rebuild your blog, and see how it works.
 // If you need a handy color picker try http://hslpicker.com
 
+
 $header-bg: #00082e;
 $title-color: #dedede;
+
 //$subtitle-color: lighten($header-bg, 58);
 //$nav-bg: desaturate(lighten(#8fc17a, 18), 5);
 //$nav-bg-front: image-url('noise.png');
@@ -20,22 +22,22 @@ $title-color: #dedede;
 //$solarized: light;
 
 /* If you want to tweak the Solarized colors you can do that here */
-//$base03:          #002b36; //darkest blue
-//$base02:          #073642; //dark blue
-//$base01:          #586e75; //darkest gray
-//$base00:          #657b83; //dark gray
-//$base0:           #839496; //medium gray
-//$base1:           #93a1a1; //medium light gray
-//$base2:           #eee8d5; //cream
-//$base3:           #fdf6e3; //white
-//$solar-yellow:    #b58900;
-//$solar-orange:    #cb4b16;
-//$solar-red:       #dc322f;
-//$solar-magenta:   #d33682;
-//$solar-violet:    #6c71c4;
-//$solar-blue:      #268bd2;
-//$solar-cyan:      #2aa198;
-//$solar-green:     #859900;
+$base03:          #f8f8f8; //darkest blue         //background
+$base02:          #e6e6e6; //dark blue            //border/line-num
+$base01:          #999988; //darkest gray         //comments
+$base00:          #ff0000; //dark gray            //???
+$base0:           #839496; //medium gray          //
+$base1:           #93a1a1; //medium light gray
+$base2:           #eee8d5; //cream
+$base3:           #fdf6e3; //white
+$solar-yellow:    #b58900;
+$solar-orange:    #cb4b16;
+$solar-red:       #dc322f;                        //keywords
+$solar-magenta:   #d33682;
+$solar-violet:    #6c71c4;
+$solar-blue:      #000000;                        //main text
+$solar-cyan:      #2aa198;
+$solar-green:     #4D8EFA;                        //functions, e.g. map
 
 
 /* Non highlighted code colors */
@@ -100,5 +102,4 @@ $footer-border-bottom: darken($footer-bg, 15) !default;
 $footer-link-color: darken($footer-bg, 38) !default;
 $footer-link-color-hover: darken($footer-color, 25) !default;
 $page-border-bottom: darken($footer-bg, 5) !default;
-
 */
