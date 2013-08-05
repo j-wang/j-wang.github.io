@@ -4,7 +4,7 @@
   <title><![CDATA[Category: web | James's Blog]]></title>
   <link href="http://j-wang.net/blog/categories/web/atom.xml" rel="self"/>
   <link href="http://j-wang.net/"/>
-  <updated>2013-08-05T02:35:09-04:00</updated>
+  <updated>2013-08-05T02:47:49-04:00</updated>
   <id>http://j-wang.net/</id>
   <author>
     <name><![CDATA[James Wang]]></name>
@@ -30,10 +30,29 @@
 
 <p>Only Hacker Schoolers can play the game, but screenshots from it are below.</p>
 
-<p><span class='caption-wrapper'><img class='caption' src='/images/posts/faces_game_login.png' width='' height='' alt='Login screen for username/password.' title='Login screen for username/password.'><span class='caption-text'>Login screen for username/password.</span></span>
-<span class='caption-wrapper'><img class='caption' src='/images/posts/faces_game_select_batch.png' width='' height='' alt='Batch selection. This is dynamically scraped from the Hacker School website and will update for future batches.' title='Batch selection. This is dynamically scraped from the Hacker School website and will update for future batches.'><span class='caption-text'>Batch selection. This is dynamically scraped from the Hacker School website and will update for future batches.</span></span>
-<span class='caption-wrapper'><img class='caption' src='/images/posts/faces_game_guess.png' width='' height='' alt='Guess who this is? Screen that shows random Hacker Schoolers and a random selection of names.' title='Guess who this is? Screen that shows random Hacker Schoolers and a random selection of names.'><span class='caption-text'>Guess who this is? Screen that shows random Hacker Schoolers and a random selection of names.</span></span>
-<span class='caption-wrapper'><img class='caption' src='/images/posts/faces_game_after_guess.png' width='' height='' alt='Shows name, if you got it right, and listed skills of the Hacker Schooler.' title='Shows name, if you got it right, and listed skills of the Hacker Schooler.'><span class='caption-text'>Shows name, if you got it right, and listed skills of the Hacker Schooler.</span></span></p>
+<h2>Login Screen</h2>
+
+<p>Takes a username and password, which my scraper (built without preexisting scraper/spider libraries) uses to login into the Hacker School website for the user session.</p>
+
+<p><span class='caption-wrapper'><img class='caption' src='/images/posts/faces_game_login.png' width='' height='' alt='' title=''><span class='caption-text'></span></span></p>
+
+<h2>Batch Selection</h2>
+
+<p>These batches are dynamically scraped from the Hacker School website, which means that this will automatically handle future batches.</p>
+
+<p><span class='caption-wrapper'><img class='caption' src='/images/posts/faces_game_select_batch.png' width='' height='' alt='' title=''><span class='caption-text'></span></span></p>
+
+<h2>Guessing Screen</h2>
+
+<p>This screen shows random Hacker Schooler, with the correct name somewhere in the list of five other names (drawn randomly from the same batch) below.</p>
+
+<p><span class='caption-wrapper'><img class='caption' src='/images/posts/faces_game_guess.png' width='' height='' alt='' title=''><span class='caption-text'></span></span></p>
+
+<h2>Result Screen</h2>
+
+<p>Shows whether or not the user correctly answered, the name of the Hacker Schooler, and his or her listed skills on the Hacker School website.</p>
+
+<p><span class='caption-wrapper'><img class='caption' src='/images/posts/faces_game_after_guess.png' width='' height='' alt='' title=''><span class='caption-text'></span></span></p>
 ]]></content>
   </entry>
   
