@@ -18,7 +18,22 @@ Finally, I decided to create a "Faces Game," based on a project from a prior bat
 
 Only Hacker Schoolers can play the game, but screenshots from it are below.
 
-{% imgcap /images/posts/faces_game_login.png Login screen for username/password. %}
-{% imgcap /images/posts/faces_game_select_batch.png Batch selection. This is dynamically scraped from the Hacker School website and will update for future batches. %}
-{% imgcap /images/posts/faces_game_guess.png Guess who this is? Screen that shows random Hacker Schoolers and a random selection of names. %}
-{% imgcap /images/posts/faces_game_after_guess.png Shows name, if you got it right, and listed skills of the Hacker Schooler. %}
+## Login Screen
+Takes a username and password, which my scraper (built without preexisting scraper/spider libraries) uses to login into the Hacker School website for the user session.
+
+{% imgcap /images/posts/faces_game_login.png %}
+
+## Batch Selection
+These batches are dynamically scraped from the Hacker School website, which means that this will automatically handle future batches.
+
+{% imgcap /images/posts/faces_game_select_batch.png %}
+
+## Guessing Screen
+This screen shows random Hacker Schooler, with the correct name somewhere in the list of five other names (drawn randomly from the same batch) below.
+
+{% imgcap /images/posts/faces_game_guess.png %}
+
+## Result Screen
+Shows whether or not the user correctly answered, the name of the Hacker Schooler, and his or her listed skills on the Hacker School website.
+
+{% imgcap /images/posts/faces_game_after_guess.png %}
