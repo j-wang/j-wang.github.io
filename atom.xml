@@ -4,7 +4,7 @@
   <title><![CDATA[James's Blog]]></title>
   <link href="http://j-wang.net/atom.xml" rel="self"/>
   <link href="http://j-wang.net/"/>
-  <updated>2013-08-05T11:09:36-04:00</updated>
+  <updated>2013-08-05T14:56:15-04:00</updated>
   <id>http://j-wang.net/</id>
   <author>
     <name><![CDATA[James Wang]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[DBF to SQL]]></title>
+    <link href="http://j-wang.net/blog/2013/07/18/dbf-to-sql/"/>
+    <updated>2013-07-18T14:42:00-04:00</updated>
+    <id>http://j-wang.net/blog/2013/07/18/dbf-to-sql</id>
+    <content type="html"><![CDATA[<p>This is a somewhat less exciting project and announcement, but I put together a utility that helps translate Foxpro DBF to SQLite. In case you don&rsquo;t recognize the word Foxpro, it&rsquo;s a Microsoft DBMS whose final version was released over five years ago (and whose heyday was nearly two decades ago). WomensTrust has a database that I&rsquo;ll be getting a hold of soon, and I wanted to actually be able to use modern tools to work with the data instead of having it trapped in a sunsetted technology. I tested it on a sample database, and it works fine, if a bit messily. It&rsquo;s directly reading and processing the data in the DBF tables. It tried to preserve the format and structure of the tables, but it&rsquo;s not perfect.</p>
+
+<p>I haven&rsquo;t tested the script with any other dialects of SQL, but since I&rsquo;m just gluing together a Python dbf library and SQLAlchemy, it should require minimal effort to adapt it (though once you&rsquo;ve translated DBF to SQLite, there are far better tools available for getting it into other dialects of SQL). The code is <a href="https://github.com/j-wang/dbf_to_sql">here</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Fun with Python For Loops]]></title>
@@ -209,8 +220,6 @@
 
 
 <p>On the other hand, if you need to skip around a loop (backwards as well as forwards), it is probably better (and clearer) to just use a while loop.</p>
-
-<p>while:</p>
 
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>

@@ -9,7 +9,7 @@
   <meta name="author" content="James Wang">
 
   
-  <meta name="description" content="As mentioned in my last post, while working on a lambda calculus interpreter, I encountered an issue where I wanted to skip ahead in a for loop, but &hellip;">
+  <meta name="description" content="This is a somewhat less exciting project and announcement, but I put together a utility that helps translate Foxpro DBF to SQLite. In case you don& &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,46 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/07/18/dbf-to-sql/">DBF to SQL</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-18T14:42:00-04:00" pubdate data-updated="true">Jul 18<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/07/18/dbf-to-sql/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This is a somewhat less exciting project and announcement, but I put together a utility that helps translate Foxpro DBF to SQLite. In case you don&rsquo;t recognize the word Foxpro, it&rsquo;s a Microsoft DBMS whose final version was released over five years ago (and whose heyday was nearly two decades ago). WomensTrust has a database that I&rsquo;ll be getting a hold of soon, and I wanted to actually be able to use modern tools to work with the data instead of having it trapped in a sunsetted technology. I tested it on a sample database, and it works fine, if a bit messily. It&rsquo;s directly reading and processing the data in the DBF tables. It tried to preserve the format and structure of the tables, but it&rsquo;s not perfect.</p>
+
+<p>I haven&rsquo;t tested the script with any other dialects of SQL, but since I&rsquo;m just gluing together a Python dbf library and SQLAlchemy, it should require minimal effort to adapt it (though once you&rsquo;ve translated DBF to SQLite, there are far better tools available for getting it into other dialects of SQL). The code is <a href="https://github.com/j-wang/dbf_to_sql">here</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -474,53 +514,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/02/22/raspberry-pi-for-valentines-day/">Raspberry Pi for Valentine&#8217;s Day</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-02-22T00:00:00-05:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2013</time>
-        
-         | <a href="/blog/2013/02/22/raspberry-pi-for-valentines-day/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>For Valentine&rsquo;s Day, I surprised Liz with an iPad Mini. We were selling her current Macbook Air because it just didn&rsquo;t have the power to run Solidworks, Autocad, and other technical programs she&rsquo;d soon need for her engineering/design classes. However, she attached a fair amount of sentimental value to that particular Macbook Air (it was another surprise gift from me). I figured I&rsquo;d at least update the sentimental value with the iPad because it filled her need for a portable device and she had liked the Mini when we visited an Apple Store recently.</p>
-
-<p>For her gift, she surprised me with a Raspberry Pi. In a pie.</p>
-
-<p>Apparently, she had searched for a good &ldquo;pie proxy&rdquo; as a presentation tool for the Raspberry Pi but eventually, for lack of a better option, settled on an actual pie (blueberry, but close enough). I don&rsquo;t have a picture of the pie, unfortunately, but I do have a picture of the blueberry stained box, which I vacuum sealed afterwards in case I needed any of the numbers on it (it&rsquo;d otherwise be sticky and good luck cleaning off the box without destroying it).</p>
-
-<div align='center'><div align='center' style='width: 310px;'><span class='caption-wrapper'><img class='caption' src='/images/posts/raspberry_pi.jpg' width='' height='' alt='I suppose this might have been a problem if I needed to return it.' title='I suppose this might have been a problem if I needed to return it.'><span class='caption-text'>I suppose this might have been a problem if I needed to return it.</span></span></div></div>
-
-
-<p>I suppose we&rsquo;re a bit of an odd couple, but I wouldn&rsquo;t have it any other way.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -540,6 +533,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/07/18/dbf-to-sql/">DBF to SQL</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/07/12/fun-with-python-for-loops/">Fun With Python for Loops</a>
       </li>
     
@@ -553,10 +550,6 @@
     
       <li class="post">
         <a href="/blog/2013/06/21/ai-for-tic-tac-toe/">AI for Tic-Tac-Toe</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/14/faces-game-web-app/">Faces Game Web App</a>
       </li>
     
   </ul>
@@ -601,12 +594,12 @@
 <li class='category'><a href='/blog/categories/food-science/'>food science (2)</a></li>
 <li class='category'><a href='/blog/categories/fun/'>fun (1)</a></li>
 <li class='category'><a href='/blog/categories/hacker/'>hacker (1)</a></li>
-<li class='category'><a href='/blog/categories/hacker-school/'>hacker school (5)</a></li>
+<li class='category'><a href='/blog/categories/hacker-school/'>hacker school (6)</a></li>
 <li class='category'><a href='/blog/categories/hardware-hacking/'>hardware hacking (2)</a></li>
 <li class='category'><a href='/blog/categories/haskell/'>haskell (1)</a></li>
 <li class='category'><a href='/blog/categories/lambda-calculus/'>lambda calculus (1)</a></li>
-<li class='category'><a href='/blog/categories/programming/'>programming (6)</a></li>
-<li class='category'><a href='/blog/categories/python/'>python (5)</a></li>
+<li class='category'><a href='/blog/categories/programming/'>programming (7)</a></li>
+<li class='category'><a href='/blog/categories/python/'>python (6)</a></li>
 <li class='category'><a href='/blog/categories/running/'>running (1)</a></li>
 <li class='category'><a href='/blog/categories/school/'>school (1)</a></li>
 <li class='category'><a href='/blog/categories/sous-vide/'>sous vide (3)</a></li>
