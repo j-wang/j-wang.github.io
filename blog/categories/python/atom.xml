@@ -4,7 +4,7 @@
   <title><![CDATA[Category: python | James's Blog]]></title>
   <link href="http://j-wang.net/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://j-wang.net/"/>
-  <updated>2013-08-05T03:47:58-04:00</updated>
+  <updated>2013-08-05T11:09:36-04:00</updated>
   <id>http://j-wang.net/</id>
   <author>
     <name><![CDATA[James Wang]]></name>
@@ -392,9 +392,9 @@
 </span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-<p>Again, it&rsquo;s not <em>that</em> bad, given how short the set of cases there are here (I&rsquo;ll have to actually find a longer interpreter to give a properly horrifying example). In fact, taking into account the <code>chunkWord</code> gymnastics I had to do in Haskell to satisfy the type checker (though that might just be my ignorance in Haskell), it might even look nicer to some (aside from the <code>first_letter</code> gymnastics required here because you can&rsquo;t easily skip ahead characters in a Python <code>for</code> loop&hellip; a topic for another post). However, even here the specific case pattern looks annoyingly verbose and repetitive, at least to my eyes (it takes up two lines at minimum and starts to blur together with many, many <code>elif</code>s or, alternatively, spaghetti code where the operations are separated from the call site if you opt for using a dictionary to handle each case&hellip; especially if you have to define the operations as functions separate from the dictionary).</p>
+<p>Again, it&rsquo;s not <em>that</em> bad, given how short the set of cases there are here (I&rsquo;ll have to actually find a longer interpreter to give a properly horrifying example). In fact, taking into account the <code>chunkWord</code> gymnastics I had to do in Haskell to satisfy the type checker (though that might just be due to my ignorance in Haskell), it might even look nicer to some (&hellip; aside from the <code>first_letter</code> gymnastics required here because you can&rsquo;t easily skip ahead characters in a Python <code>for</code> loop&hellip; a topic for another post). However, even here the specific case pattern looks annoyingly verbose and repetitive, at least to my eyes. <code>elif</code>s takes up two lines at minimum and starts to blur together with many, many <code>elif</code> statements. Alternatively, <code>elif</code> blocks start turning into spaghetti code if you opt for using a dictionary to handle each case, with the instructions for each case separated from conditional statements themselves, especially if you have to define the operations as functions separate from the dictionary.</p>
 
-<p>However, this type of ugliness does comes with an advantage. The Haskell version actually has a lot of code repetition which is made tolerable and even pleasant through pattern-matching. Being forced to think more cleverly about how to express one&rsquo;s ideas in a succinct way to counter that ugliness can give one deeper insight into what&rsquo;s actually going on. For example, the below code more explicitly acknowledges the code repetition and handles the <code>for</code> skipping-ahead challenge in a cleaner way (to my eyes), by accumulating characters when the current character is not one of the special delimiters and clearing it when it reaches one of those delimiters.</p>
+<p>However, this type of ugliness does comes with an advantage when trying a learn a concept. The Haskell version actually has a lot of code repetition which is made tolerable and even pleasant through pattern-matching. Being forced to think more cleverly about how to express one&rsquo;s ideas in a succinct way to counter that ugliness can give one deeper insight into what&rsquo;s actually going on. For example, the below code more explicitly acknowledges the code repetition and handles the <code>for</code> skipping-ahead challenge in a cleaner way (to my eyes), by accumulating characters when the current character is not one of the special delimiters and clearing it when it reaches one of those delimiters.</p>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -446,7 +446,7 @@
 </span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-<p>Even though this can probably also be improved upon, being forced to think harder and attack the problem with multiple paradigms was helpful. The fact that Python is not great at handling multiple cases in a neat, clean way was actually beneficial for my understanding in this case.</p>
+<p>Even though this can probably also be improved upon, being forced to think harder and attack the problem with multiple paradigms was helpful. The fact that Python is not great at handling multiple cases in a neat, clean way was actually beneficial for my understanding in this case. Given this experience, I think it might be helpful in the future to try to solve hard programming problems in languages that really don&rsquo;t have good support for paradigms that these problems are most naturally expressed in.</p>
 ]]></content>
   </entry>
   
