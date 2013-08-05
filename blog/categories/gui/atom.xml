@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: GUI | James's Blog]]></title>
+  <link href="http://j-wang.net/blog/categories/gui/atom.xml" rel="self"/>
+  <link href="http://j-wang.net/"/>
+  <updated>2013-08-05T02:35:09-04:00</updated>
+  <id>http://j-wang.net/</id>
+  <author>
+    <name><![CDATA[James Wang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[First Project: Simple Text Editor]]></title>
+    <link href="http://j-wang.net/blog/2013/06/07/first-project-simple-text-editor/"/>
+    <updated>2013-06-07T15:31:00-04:00</updated>
+    <id>http://j-wang.net/blog/2013/06/07/first-project-simple-text-editor</id>
+    <content type="html"><![CDATA[<p>I have a lot of project ideas that I want to play around with during Hacker School. However, my primary goal &mdash; the thread that ties all of these disparate ideas together &mdash; is to tackle areas of programming that I have never encountered. If an area of programming is &ldquo;magical&rdquo; to me, I want to dispel that magic.</p>
+
+<p>First up on that list of &ldquo;magical&rdquo; topics is graphical user interfaces (GUIs). I remember trying to experiment with GUIs in a group project during high school Java using Swing and AWT. I also remember quitting out of disgust after only a brief foray into their APIs, leaving one of my poor teammates the painful task of programming our project&rsquo;s GUI, while I worked on fun game logic. Since that brief attempt, I have never attempted to play around with GUIs ever again, so I have remained mystified as to how I would actually go about creating them. So, after nearly a decade, I&rsquo;ve decided to try my hand at it again.<!-- more --></p>
+
+<p>Given my learning goal, I wanted a project whose primary component was the GUI. After a bit of brainstorming, I settled on a basic text editor. No spell-check, no fonts, and no fancy functionality. I wasn&rsquo;t looking to recreate Word or Emacs. I just wanted something to play the role of mannequin for my GUI.</p>
+
+<p>I also debated a bit which language I should use. Clojure and Python were the primary contenders. I&rsquo;m pretty curious about Clojure, and its Java interop would give me access to Swing and AWT, but after seeing the state of those frameworks (not much different than when I was in high school) and realizing that I&rsquo;d spend a lot more time wrestling with Clojure and Java frameworks than learning, I decided to go with Python and potentially revisit Clojure later. Python is the (mainstream) programming language I know best (alas for poor frozen and academic SML) and I&rsquo;ve heard good things about Tkinter.</p>
+
+<p>The end result is on my <a href="https://github.com/j-wang/simple-text-editor">Github</a>. A screenshot is below.</p>
+
+<p><span class='caption-wrapper'><img class='caption' src='/images/posts/python_texteditor.png' width='' height='' alt='True to its name, it is quite simple' title='True to its name, it is quite simple'><span class='caption-text'>True to its name, it is quite simple</span></span></p>
+
+<p>The process of building the GUI was all right. It was less painful than I had expected, probably in part because I&rsquo;m a more experienced programmer now and Tkinter is simpler than Swing/AWT. However, I probably won&rsquo;t focus much more on GUIs specifically after this project. I&rsquo;m glad I did it, since I will know how to approach creating GUIs in the future, but it was more an exercise of learning APIs and painstakingly laying out each element in code than it was a &ldquo;hard problem&rdquo; that stretched me as a programmer.</p>
+]]></content>
+  </entry>
+  
+</feed>

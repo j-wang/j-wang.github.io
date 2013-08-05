@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: web | James's Blog]]></title>
+  <link href="http://j-wang.net/blog/categories/web/atom.xml" rel="self"/>
+  <link href="http://j-wang.net/"/>
+  <updated>2013-08-05T02:35:09-04:00</updated>
+  <id>http://j-wang.net/</id>
+  <author>
+    <name><![CDATA[James Wang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Faces Game Web App]]></title>
+    <link href="http://j-wang.net/blog/2013/06/14/faces-game-web-app/"/>
+    <updated>2013-06-14T19:09:00-04:00</updated>
+    <id>http://j-wang.net/blog/2013/06/14/faces-game-web-app</id>
+    <content type="html"><![CDATA[<p>Last week, while working on my <a href="/blog/2013/06/07/first-project-simple-text-editor/">simple text editor</a>, I chatted with fellow Hacker Schoolers about what was actually being used in the industry nowadays for GUIs. The answer I most commonly heard was that the tech world had largely moved on to web (and mobile) apps. No one who I spoke to actually worked on desktop applications. The insight here is quite fascinating to me.</p>
+
+<p>Developers and users are a chicken-and-egg problem. To get developers to work on a platform, you need users. To have users, you need a strong developer base that creates appealing and useful apps. It&rsquo;s a small sample set, but the lopsided nature of the sentiments suggest to me that either developers have a stronger lean towards web than users or the companies that work in web are much more interesting/appealing to the strong programmers that Hacker School selects for and attracts. Again, it&rsquo;s too small a sample set to draw sweeping conclusions, but it is an interesting data point. Nevertheless, these conversations helped point me to my next project: a web app.<!-- more --></p>
+
+<p>I&rsquo;ve built static websites and played around with content management systems (CMS) like Wordpress in the past. In doing so, I&rsquo;ve played around with HTML and CSS. However, those have mainly been exercises of graphical tweaking. I&rsquo;ve never built a web app (dynamic content) before, which requires more understanding of how web sites serve content (requests and responses), knowledge of server/user data management (persistent storage and sessions/cookies), and at least a basic understanding of concurrency &mdash; though web frameworks largely abstract away the latter.</p>
+
+<p>At the beginning of the week, I spent many productive hours working through tutorials and many less productive hours thinking about what web app to create and what language to write it in. I ended up defaulting to Python, since like last time my current goal is to focus on this area topic and not languages. In terms of web frameworks, a fellow batch-mate, <a href="http://skien.cc/">Erik</a>, suggested that I look at <a href="http://flask.pocoo.org/">Flask</a>, whose lightweight nature immediately appealed to me. For what I needed it for, it has easy-to-understand and extremely simple routing and templating functionality. There&rsquo;s still some magic in routing, but I&rsquo;m not quite prepared to write my own web framework and create HTML request-handling/responses myself quite yet.</p>
+
+<p>Finally, I decided to create a &ldquo;Faces Game,&rdquo; based on a project from a prior batch. There was some demand for an updated version including our batch, and it had all of the elements I wanted: dynamic content, (minor) data management, login handling (since I wanted to restrict it to Hacker Schoolers), scraping (I wanted to dynamically retrieve information from the Hacker School website for posterity), and processing/handling scraped data. The code is on <a href="https://github.com/j-wang/faces-game">Github</a> and the app is live on <a href="https://enigmatic-hollows-9840.herokuapp.com/">Heroku</a>. There are definitely many improvements I can make to it: multiple difficulty levels, free-form responses, caching, OAuth vs. mechanize login, etc. but it served its learning purpose. I learned a lot about what HTML requests/responses contain, HTML GET and POST methods, how form data works, how HTML templates work, and how web servers work (along with, of course, a refresher on writing HTML/CSS). Given that these topics are non-specific to Python and Flask, post-project I found that I could helpfully pair with several other Hacker Schoolers on their web apps (whether they were Python/Flask or not). Although I&rsquo;m probably done with this web app, given their importance/prevalence I&rsquo;ll probably be revisiting web apps again in the future.</p>
+
+<p>Only Hacker Schoolers can play the game, but screenshots from it are below.</p>
+
+<p><span class='caption-wrapper'><img class='caption' src='/images/posts/faces_game_login.png' width='' height='' alt='Login screen for username/password.' title='Login screen for username/password.'><span class='caption-text'>Login screen for username/password.</span></span>
+<span class='caption-wrapper'><img class='caption' src='/images/posts/faces_game_select_batch.png' width='' height='' alt='Batch selection. This is dynamically scraped from the Hacker School website and will update for future batches.' title='Batch selection. This is dynamically scraped from the Hacker School website and will update for future batches.'><span class='caption-text'>Batch selection. This is dynamically scraped from the Hacker School website and will update for future batches.</span></span>
+<span class='caption-wrapper'><img class='caption' src='/images/posts/faces_game_guess.png' width='' height='' alt='Guess who this is? Screen that shows random Hacker Schoolers and a random selection of names.' title='Guess who this is? Screen that shows random Hacker Schoolers and a random selection of names.'><span class='caption-text'>Guess who this is? Screen that shows random Hacker Schoolers and a random selection of names.</span></span>
+<span class='caption-wrapper'><img class='caption' src='/images/posts/faces_game_after_guess.png' width='' height='' alt='Shows name, if you got it right, and listed skills of the Hacker Schooler.' title='Shows name, if you got it right, and listed skills of the Hacker Schooler.'><span class='caption-text'>Shows name, if you got it right, and listed skills of the Hacker Schooler.</span></span></p>
+]]></content>
+  </entry>
+  
+</feed>

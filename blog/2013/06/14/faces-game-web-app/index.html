@@ -1,0 +1,353 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Faces Game Web App - James's Blog</title>
+  <meta name="author" content="James Wang">
+
+  
+  <meta name="description" content="Last week, while working on my simple text editor, I chatted with fellow Hacker Schoolers about what was actually being used in the industry nowadays &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://j-wang.net/blog/2013/06/14/faces-game-web-app">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="James's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-42054934-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">James's Blog</a></h1>
+  
+    <h2>Cookery, Hackery, and Hopefully Not Quackery</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:j-wang.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Faces Game Web App</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-14T19:09:00-04:00" pubdate data-updated="true">Jun 14<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Last week, while working on my <a href="/blog/2013/06/07/first-project-simple-text-editor/">simple text editor</a>, I chatted with fellow Hacker Schoolers about what was actually being used in the industry nowadays for GUIs. The answer I most commonly heard was that the tech world had largely moved on to web (and mobile) apps. No one who I spoke to actually worked on desktop applications. The insight here is quite fascinating to me.</p>
+
+<p>Developers and users are a chicken-and-egg problem. To get developers to work on a platform, you need users. To have users, you need a strong developer base that creates appealing and useful apps. It&rsquo;s a small sample set, but the lopsided nature of the sentiments suggest to me that either developers have a stronger lean towards web than users or the companies that work in web are much more interesting/appealing to the strong programmers that Hacker School selects for and attracts. Again, it&rsquo;s too small a sample set to draw sweeping conclusions, but it is an interesting data point. Nevertheless, these conversations helped point me to my next project: a web app.<!-- more --></p>
+
+<p>I&rsquo;ve built static websites and played around with content management systems (CMS) like Wordpress in the past. In doing so, I&rsquo;ve played around with HTML and CSS. However, those have mainly been exercises of graphical tweaking. I&rsquo;ve never built a web app (dynamic content) before, which requires more understanding of how web sites serve content (requests and responses), knowledge of server/user data management (persistent storage and sessions/cookies), and at least a basic understanding of concurrency &mdash; though web frameworks largely abstract away the latter.</p>
+
+<p>At the beginning of the week, I spent many productive hours working through tutorials and many less productive hours thinking about what web app to create and what language to write it in. I ended up defaulting to Python, since like last time my current goal is to focus on this area topic and not languages. In terms of web frameworks, a fellow batch-mate, <a href="http://skien.cc/">Erik</a>, suggested that I look at <a href="http://flask.pocoo.org/">Flask</a>, whose lightweight nature immediately appealed to me. For what I needed it for, it has easy-to-understand and extremely simple routing and templating functionality. There&rsquo;s still some magic in routing, but I&rsquo;m not quite prepared to write my own web framework and create HTML request-handling/responses myself quite yet.</p>
+
+<p>Finally, I decided to create a &ldquo;Faces Game,&rdquo; based on a project from a prior batch. There was some demand for an updated version including our batch, and it had all of the elements I wanted: dynamic content, (minor) data management, login handling (since I wanted to restrict it to Hacker Schoolers), scraping (I wanted to dynamically retrieve information from the Hacker School website for posterity), and processing/handling scraped data. The code is on <a href="https://github.com/j-wang/faces-game">Github</a> and the app is live on <a href="https://enigmatic-hollows-9840.herokuapp.com/">Heroku</a>. There are definitely many improvements I can make to it: multiple difficulty levels, free-form responses, caching, OAuth vs. mechanize login, etc. but it served its learning purpose. I learned a lot about what HTML requests/responses contain, HTML GET and POST methods, how form data works, how HTML templates work, and how web servers work (along with, of course, a refresher on writing HTML/CSS). Given that these topics are non-specific to Python and Flask, post-project I found that I could helpfully pair with several other Hacker Schoolers on their web apps (whether they were Python/Flask or not). Although I&rsquo;m probably done with this web app, given their importance/prevalence I&rsquo;ll probably be revisiting web apps again in the future.</p>
+
+<p>Only Hacker Schoolers can play the game, but screenshots from it are below.</p>
+
+<p><span class='caption-wrapper'><img class='caption' src='/images/posts/faces_game_login.png' width='' height='' alt='Login screen for username/password.' title='Login screen for username/password.'><span class='caption-text'>Login screen for username/password.</span></span>
+<span class='caption-wrapper'><img class='caption' src='/images/posts/faces_game_select_batch.png' width='' height='' alt='Batch selection. This is dynamically scraped from the Hacker School website and will update for future batches.' title='Batch selection. This is dynamically scraped from the Hacker School website and will update for future batches.'><span class='caption-text'>Batch selection. This is dynamically scraped from the Hacker School website and will update for future batches.</span></span>
+<span class='caption-wrapper'><img class='caption' src='/images/posts/faces_game_guess.png' width='' height='' alt='Guess who this is? Screen that shows random Hacker Schoolers and a random selection of names.' title='Guess who this is? Screen that shows random Hacker Schoolers and a random selection of names.'><span class='caption-text'>Guess who this is? Screen that shows random Hacker Schoolers and a random selection of names.</span></span>
+<span class='caption-wrapper'><img class='caption' src='/images/posts/faces_game_after_guess.png' width='' height='' alt='Shows name, if you got it right, and listed skills of the Hacker Schooler.' title='Shows name, if you got it right, and listed skills of the Hacker Schooler.'><span class='caption-text'>Shows name, if you got it right, and listed skills of the Hacker Schooler.</span></span></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">James Wang</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-14T19:09:00-04:00" pubdate data-updated="true">Jun 14<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/hacker-school/'>hacker school</a>, <a class='category' href='/blog/categories/programming/'>programming</a>, <a class='category' href='/blog/categories/python/'>python</a>, <a class='category' href='/blog/categories/web/'>web</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://j-wang.net/blog/2013/06/14/faces-game-web-app/" data-via="Avantos" data-counturl="http://j-wang.net/blog/2013/06/14/faces-game-web-app/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/06/07/first-project-simple-text-editor/" title="Previous Post: First Project: Simple Text Editor">&laquo; First Project: Simple Text Editor</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/06/21/ai-for-tic-tac-toe/" title="Next Post: AI for Tic-Tac-Toe">AI for Tic-Tac-Toe &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/07/12/fun-with-python-for-loops/">Fun With Python for Loops</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/10/lambda-calculus-interpreter-and-benefits-of-ugliness/">Lambda Calculus Interpreter and Benefits of Ugliness</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/30/hacker-school-activity-log-jun-21st-28th/">Hacker School Activity Log: Jun 21st - 28th</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/21/ai-for-tic-tac-toe/">AI for Tic-Tac-Toe</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/14/faces-game-web-app/">Faces Game Web App</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/j-wang">@j-wang</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'j-wang',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+<section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/ai/'>AI (1)</a></li>
+<li class='category'><a href='/blog/categories/gui/'>GUI (1)</a></li>
+<li class='category'><a href='/blog/categories/cooking/'>cooking (2)</a></li>
+<li class='category'><a href='/blog/categories/fitness/'>fitness (1)</a></li>
+<li class='category'><a href='/blog/categories/food-science/'>food science (2)</a></li>
+<li class='category'><a href='/blog/categories/fun/'>fun (1)</a></li>
+<li class='category'><a href='/blog/categories/hacker/'>hacker (1)</a></li>
+<li class='category'><a href='/blog/categories/hacker-school/'>hacker school (5)</a></li>
+<li class='category'><a href='/blog/categories/hardware-hacking/'>hardware hacking (2)</a></li>
+<li class='category'><a href='/blog/categories/haskell/'>haskell (1)</a></li>
+<li class='category'><a href='/blog/categories/lambda-calculus/'>lambda calculus (1)</a></li>
+<li class='category'><a href='/blog/categories/programming/'>programming (6)</a></li>
+<li class='category'><a href='/blog/categories/python/'>python (5)</a></li>
+<li class='category'><a href='/blog/categories/running/'>running (1)</a></li>
+<li class='category'><a href='/blog/categories/school/'>school (1)</a></li>
+<li class='category'><a href='/blog/categories/sous-vide/'>sous vide (3)</a></li>
+<li class='category'><a href='/blog/categories/valentine-s-day/'>valentine's day (1)</a></li>
+<li class='category'><a href='/blog/categories/web/'>web (1)</a></li>
+
+  </ul>
+</section>
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/veriathon?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - James Wang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'j-wang';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://j-wang.net/blog/2013/06/14/faces-game-web-app/';
+        var disqus_url = 'http://j-wang.net/blog/2013/06/14/faces-game-web-app/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

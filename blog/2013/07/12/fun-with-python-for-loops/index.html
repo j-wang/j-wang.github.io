@@ -1,0 +1,567 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Fun with Python For Loops - James's Blog</title>
+  <meta name="author" content="James Wang">
+
+  
+  <meta name="description" content="As mentioned in my last post, while working on a lambda calculus interpreter, I encountered an issue where I wanted to skip ahead in a for loop, but &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://j-wang.net/blog/2013/07/12/fun-with-python-for-loops">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="James's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-42054934-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">James's Blog</a></h1>
+  
+    <h2>Cookery, Hackery, and Hopefully Not Quackery</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:j-wang.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Fun With Python for Loops</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-12T13:07:00-04:00" pubdate data-updated="true">Jul 12<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>As mentioned in my <a href="/blog/2013/07/10/lambda-calculus-interpreter-and-benefits-of-ugliness/">last post</a>, while working on a lambda calculus interpreter, I encountered an issue where I wanted to skip ahead in a <em>for</em> loop, but found that I couldn&rsquo;t. Although I initially put it aside, when I was getting a code review on the interpreter from Tom, I remembered the issue again and did some further investigation on the topic.<!-- more --></p>
+
+<h2>Reassigning the Index Variable</h2>
+
+<p>It turns out that unlike <em>for</em> loops in Java or C++, the index variable (e.g. <code>i</code> in <code>for (int i = 0; i &lt; 10; i++)</code> is drawn directly from the object following the <code>in</code> keyword each time the <em>for</em> loop goes around. As such, changing what the index <code>i</code> references in the equivalent Python loop <code>for i in range(10)</code> won&rsquo;t affect the next round of the <em>for</em> loop (though it will affect anything following the reassignment in the block).</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">print</span> <span class="n">i</span>
+</span><span class='line'>    <span class="n">i</span> <span class="o">=</span> <span class="mi">20</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The above code results in:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>0
+</span><span class='line'>1
+</span><span class='line'>2
+</span><span class='line'>3
+</span><span class='line'>4</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Reassigning the Iterable Variable</h2>
+
+<p>Additionally, after you provide Python with an initial reference to an object with an iterable method in a <em>for</em> loop, Python accesses the object directly without referring back to the reference variable passed into the <em>for</em> loop. So, what does this mean? Well, it means that you can&rsquo;t reassign the <em>for</em> loop&rsquo;s iterable object in the middle of a <em>for</em> loop.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">iter_this</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">iter_this</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">print</span> <span class="n">i</span>
+</span><span class='line'>    <span class="n">iter_this</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3000</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The above code, despite reassignment of <code>iter_this</code> results in:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>0
+</span><span class='line'>1
+</span><span class='line'>2
+</span><span class='line'>3
+</span><span class='line'>4</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So, does this mean that you can&rsquo;t do anything to modify what a <em>for</em> loop ranges over once you&rsquo;ve started it? Nope. Although Python accesses the iterable object directly without regards to what your reference subsequently points to, something else can also access that iterable object &mdash; specifically, the reference that you originally used to direct Python to that object.</p>
+
+<h2>Mutating the Iterable Object</h2>
+
+<p>Since you have a reference to the Python object itself, you can actually change the object that is being iterated over by the <em>for</em> loop from right under it. Essentially instead of reassigning the object&rsquo;s reference, you can change the object itself, i.e. mutate it.</p>
+
+<p>We know what the below code does:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">iter_this</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">iter_this</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">print</span> <span class="n">i</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>0
+</span><span class='line'>1
+</span><span class='line'>2
+</span><span class='line'>3
+</span><span class='line'>4</span></code></pre></td></tr></table></div></figure>
+
+
+<p>However, this does something different:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">iter_this</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">iter_this</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">print</span> <span class="n">i</span>
+</span><span class='line'>    <span class="n">iter_this</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>0
+</span><span class='line'>1
+</span><span class='line'>2</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So what happened? Well, let&rsquo;s take a closer look:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">iter_this</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">iter_this</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">print</span> <span class="s">&quot;iter: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">print</span> <span class="s">&quot;pop!: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">iter_this</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">print</span> <span class="s">&quot;iter_this: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">iter_this</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>iter: 0
+</span><span class='line'>pop!: 4
+</span><span class='line'>iter: 1
+</span><span class='line'>pop!: 3
+</span><span class='line'>iter: 2
+</span><span class='line'>pop!: 2
+</span><span class='line'>iter_this: [0, 1]</span></code></pre></td></tr></table></div></figure>
+
+
+<p>As the <em>for</em> loop iterates through the list created by the <code>range</code> function, we mutate the list by popping off its last element at the end of each <em>for</em> loop round. Hence, the list that the <em>for</em> loop is drawing from is getting shorter as the <em>for</em> loop lists, resulting in the <em>for</em> loop ending early.</p>
+
+<p>This means that if you need to skip elements in a <em>for</em> loop, you can certainly mutate the iterable object. However, just because you can doesn&rsquo;t mean you necessarily should. Mutation will often cause the <em>for</em> loop to become a lot less straightforward to reason about and may end up creating strange and confusing bugs.</p>
+
+<h2>Other Ways to Skip Around a Loop</h2>
+
+<p>One way of skipping elements in a loop that isn&rsquo;t quite as opaque is by explicitly creating another variable that can be modified and <code>continue</code>ing when the elements in the iterable are less than (or greater than, or whatever) than the modifiable variable.</p>
+
+<p>This method is what I ultimately settled on for parts of my lambda calculus interpreter that needed to skip elements. It made sense since my <em>for</em> loop skipping would always be in the forward direction (I would never need to backtrack in my <em>for</em> loop) and this makes it crystal clear what I&rsquo;m doing.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">iter_this</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</span><span class='line'><span class="n">skip_while_less</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">iter_this</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">skip_while_less</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">continue</span>
+</span><span class='line'>    <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">print</span> <span class="n">i</span>
+</span><span class='line'>        <span class="n">skip_while_less</span> <span class="o">+=</span> <span class="mi">3</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>0
+</span><span class='line'>3
+</span><span class='line'>6
+</span><span class='line'>9</span></code></pre></td></tr></table></div></figure>
+
+
+<p>On the other hand, if you need to skip around a loop (backwards as well as forwards), it is probably better (and clearer) to just use a while loop.</p>
+
+<p>while:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">i</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span class='line'><span class="n">end</span> <span class="o">=</span> <span class="mi">12</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">end</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">print</span> <span class="n">i</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">i</span> <span class="o">-=</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">i</span> <span class="o">*=</span> <span class="mi">4</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>2
+</span><span class='line'>1
+</span><span class='line'>4
+</span><span class='line'>3
+</span><span class='line'>12
+</span><span class='line'>11</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">James Wang</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-12T13:07:00-04:00" pubdate data-updated="true">Jul 12<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/hacker-school/'>hacker school</a>, <a class='category' href='/blog/categories/programming/'>programming</a>, <a class='category' href='/blog/categories/python/'>python</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://j-wang.net/blog/2013/07/12/fun-with-python-for-loops/" data-via="Avantos" data-counturl="http://j-wang.net/blog/2013/07/12/fun-with-python-for-loops/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/07/10/lambda-calculus-interpreter-and-benefits-of-ugliness/" title="Previous Post: Lambda Calculus Interpreter and Benefits of Ugliness">&laquo; Lambda Calculus Interpreter and Benefits of Ugliness</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/07/12/fun-with-python-for-loops/">Fun With Python for Loops</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/10/lambda-calculus-interpreter-and-benefits-of-ugliness/">Lambda Calculus Interpreter and Benefits of Ugliness</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/30/hacker-school-activity-log-jun-21st-28th/">Hacker School Activity Log: Jun 21st - 28th</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/21/ai-for-tic-tac-toe/">AI for Tic-Tac-Toe</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/14/faces-game-web-app/">Faces Game Web App</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/j-wang">@j-wang</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'j-wang',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+<section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/ai/'>AI (1)</a></li>
+<li class='category'><a href='/blog/categories/gui/'>GUI (1)</a></li>
+<li class='category'><a href='/blog/categories/cooking/'>cooking (2)</a></li>
+<li class='category'><a href='/blog/categories/fitness/'>fitness (1)</a></li>
+<li class='category'><a href='/blog/categories/food-science/'>food science (2)</a></li>
+<li class='category'><a href='/blog/categories/fun/'>fun (1)</a></li>
+<li class='category'><a href='/blog/categories/hacker/'>hacker (1)</a></li>
+<li class='category'><a href='/blog/categories/hacker-school/'>hacker school (5)</a></li>
+<li class='category'><a href='/blog/categories/hardware-hacking/'>hardware hacking (2)</a></li>
+<li class='category'><a href='/blog/categories/haskell/'>haskell (1)</a></li>
+<li class='category'><a href='/blog/categories/lambda-calculus/'>lambda calculus (1)</a></li>
+<li class='category'><a href='/blog/categories/programming/'>programming (6)</a></li>
+<li class='category'><a href='/blog/categories/python/'>python (5)</a></li>
+<li class='category'><a href='/blog/categories/running/'>running (1)</a></li>
+<li class='category'><a href='/blog/categories/school/'>school (1)</a></li>
+<li class='category'><a href='/blog/categories/sous-vide/'>sous vide (3)</a></li>
+<li class='category'><a href='/blog/categories/valentine-s-day/'>valentine's day (1)</a></li>
+<li class='category'><a href='/blog/categories/web/'>web (1)</a></li>
+
+  </ul>
+</section>
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/veriathon?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - James Wang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'j-wang';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://j-wang.net/blog/2013/07/12/fun-with-python-for-loops/';
+        var disqus_url = 'http://j-wang.net/blog/2013/07/12/fun-with-python-for-loops/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

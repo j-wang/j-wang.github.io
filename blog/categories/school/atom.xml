@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: school | James's Blog]]></title>
+  <link href="http://j-wang.net/blog/categories/school/atom.xml" rel="self"/>
+  <link href="http://j-wang.net/"/>
+  <updated>2013-08-05T02:35:09-04:00</updated>
+  <id>http://j-wang.net/</id>
+  <author>
+    <name><![CDATA[James Wang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Hacker School Begins]]></title>
+    <link href="http://j-wang.net/blog/2013/06/03/hacker-school-begins/"/>
+    <updated>2013-06-03T23:34:00-04:00</updated>
+    <id>http://j-wang.net/blog/2013/06/03/hacker-school-begins</id>
+    <content type="html"><![CDATA[<p>Hacker School has finally begun! The past few days have been a whirlwind of activity. Last week, I finished my last day at work, Liz and I packed up our apartment and got it loaded on a truck for California, loaded the rest of our stuff into the car, moved to NYC, and made an extremely difficult decision which coast we wanted to be on (Liz for her engineering/design programs, and me for business school).</p>
+
+<p>It&rsquo;s been exhausting, mentally and physically, and I haven&rsquo;t had much sleep at all. The exit schedule will be just as crazy. Just like how I left work and hit the ground running in NYC for Hacker School, I&rsquo;m going to have to leave Hacker School a week early on Friday and start business school at Berkeley on Monday.</p>
+
+<p>Ah well, I knew what I signed up for, and I wouldn&rsquo;t miss this opportunity for a piddling few months of &ldquo;break.&rdquo; This will be my break. I&rsquo;m exhilarated to spend three months becoming a better programmer, surrounded by people trying to do the same thing. Hearing about what some of my batch-mates do and plan to do when I met them this morning was great. There&rsquo;s a lot of experienced programmers here that I look forward to working with and learning from. Here&rsquo;s to <a href="https://www.hackerschool.com/">never graduating</a>!</p>
+]]></content>
+  </entry>
+  
+</feed>

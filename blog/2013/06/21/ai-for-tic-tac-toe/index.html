@@ -1,0 +1,493 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>AI for Tic-Tac-Toe - James's Blog</title>
+  <meta name="author" content="James Wang">
+
+  
+  <meta name="description" content="As part of my Hacker School application, I wrote a simple Tic-Tac-Toe application for my &ldquo;program written from scratch.&rdquo; My choice was &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://j-wang.net/blog/2013/06/21/ai-for-tic-tac-toe">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="James's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-42054934-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">James's Blog</a></h1>
+  
+    <h2>Cookery, Hackery, and Hopefully Not Quackery</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:j-wang.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">AI for Tic-Tac-Toe</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-21T20:28:00-04:00" pubdate data-updated="true">Jun 21<span>st</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>As part of my Hacker School application, I wrote a simple <a href="https://github.com/j-wang/hacker-school/blob/master/tictactoe.py">Tic-Tac-Toe application</a> for my &ldquo;program written from scratch.&rdquo; My choice was driven primarily by the fact that the application itself suggested a Tic-Tac-Toe application. As such, I expected many other people would write Tic-Tac-Toe (I was very right in this regard) and wanted to do something unique. My original ambitious plan was to write an AI for it. Unfortunately, I had to quickly abandon this plan, since I realized 1) I had no idea how I would go about creating one, and 2) I didn&rsquo;t have enough time to figure it out before the application was due. As such, I had to settle for infinitely expandable Tic-Tac-Toe (theoretically anyway &mdash; at greater than 15 x 15, it becomes quite visually ugly).</p>
+
+<p>Now that I do have the time, I definitely wanted to tackle writing an AI for Tic-Tac-Toe. However, I didn&rsquo;t want to just find and apply an algorithm. I wanted to have the full challenge and experience of working through how one would create an AI.<!-- more --></p>
+
+<p>My basic idea for an AI was that it would play out possible future moves and pick the one that resulted in the best outcome for itself. Of course, the trick is how one calculates &ldquo;best outcome.&rdquo;</p>
+
+<p>My first attempt involved counting the number of ways that a player could win vs. the number of ways an opponent could win and using this as the critera for determining the best next move. The main reason I decided to go this direction was simplicity of implementation: I had already implemented a complicated tallying/coordinate system in my Tic-Tac-Toe game&rsquo;s <code>Grid</code> class that I thought I could commandeer for this purposes. It also let me calculate best next moves for intermediate game-states, which appealed to me for implementing difficulty levels. The naive version of this method didn&rsquo;t work (the algorithm ignored one-move wins, preferring many ways to win over just winning), so I tried ramping up the value of a win to sys.maxint and penalizing longer chains to victory. Below, I show the primary logic behind the AI (full code is on <a href="https://github.com/j-wang/tictactoe_ai">Github</a>).</p>
+
+<p>The basic algorithm involved is iterative recursive, which is a pattern that I&rsquo;m finding I like a lot in Python. Iteratively traverse all cells of the grid (breadth):</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">traverse</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">depth</span><span class="p">,</span> <span class="n">XO</span><span class="p">,</span> <span class="n">move_acc</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">open_cells</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_open_cells</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">cells</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">dig_outcomes</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">open_cells</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">dig_outcomes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dig</span><span class="p">(</span><span class="n">cell</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">depth</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">XO</span><span class="p">,</span> <span class="n">move_acc</span><span class="p">))</span>
+</span><span class='line'>    <span class="n">solution</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">dig_outcomes</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">solution</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And then recursively &ldquo;dig&rdquo; into each of these cells by simulating the player whose simulated turn it was moving there on a deepcopied <code>Grid</code> (depth).</p>
+
+<p>The complicated code below (difficult to read mainly because it builds off of elements of the <code>Grid</code> class that I never exposed or expected to expose) shows the digging. It returns a tuple with win-loss &ldquo;scores&rdquo;, and the moves it took to reach that outcome. The &ldquo;scores&rdquo; are actually a pair of scores: the first is based on the outcome (win/loss/tie &mdash; though wins with fewer moves are given higher scores) and the second is based on how many more ways the AI could have won (and how close it was) vs. the player. Since many outcomes can be the same (win in same number of moves), I use the relative number of paths and closeness to victory as a tiebreaker.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">dig</span><span class="p">(</span><span class="n">move</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">depth</span><span class="p">,</span> <span class="n">XO</span><span class="p">,</span> <span class="n">move_acc</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">depth</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">grid</span><span class="o">.</span><span class="n">winner</span><span class="p">():</span>
+</span><span class='line'>        <span class="n">win_flag</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">if</span> <span class="n">grid</span><span class="o">.</span><span class="n">winner</span><span class="p">()</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_XO</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">win_flag</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">maxint</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">move_acc</span><span class="p">)</span>  <span class="c"># short wins best</span>
+</span><span class='line'>        <span class="k">elif</span> <span class="n">grid</span><span class="o">.</span><span class="n">winner</span><span class="p">()</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_flip_player</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_XO</span><span class="p">):</span>
+</span><span class='line'>            <span class="n">win_flag</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>  <span class="c"># losses are worst</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c"># remember that victory_routes are centered around 0</span>
+</span><span class='line'>        <span class="n">adj_victory_route</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_multiplier</span><span class="p">,</span>
+</span><span class='line'>                                <span class="n">grid</span><span class="o">.</span><span class="n">_victory_routes</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">opponent_closeness</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">adj_victory_route</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">opponent_ways</span> <span class="o">=</span> <span class="n">adj_victory_route</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">opponent_closeness</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">player_closeness</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">adj_victory_route</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">player_ways</span> <span class="o">=</span> <span class="n">adj_victory_route</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">player_closeness</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">diff</span> <span class="o">=</span> <span class="p">(</span><span class="n">player_closeness</span> <span class="o">*</span> <span class="n">player_ways</span> <span class="o">+</span>
+</span><span class='line'>                <span class="n">opponent_closeness</span> <span class="o">*</span> <span class="n">opponent_ways</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="p">((</span><span class="n">win_flag</span><span class="p">,</span> <span class="n">diff</span><span class="p">),</span> <span class="n">move_acc</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">new_grid</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">new_moves</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">move_acc</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">r</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">move</span>
+</span><span class='line'>        <span class="n">new_grid</span><span class="o">.</span><span class="n">fill_cell</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">XO</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">new_moves</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">traverse</span><span class="p">(</span><span class="n">new_grid</span><span class="p">,</span> <span class="n">depth</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_flip_player</span><span class="p">(</span><span class="n">XO</span><span class="p">),</span>
+</span><span class='line'>                        <span class="n">new_moves</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This kind of worked. The AI very often made the &ldquo;right&rdquo; move, but sometimes did stupid things. I&rsquo;m pretty sure it was because I just multiplied together closeness to victory and ways to victory naively (implicitly weighting sure victories the same as many possible, but unlikely victories). I could have refined this further, and I still think there is some value to a path like this, since I can actually create more or less smart AIs by this method, but it would have taken much more trial-and-error tweaking of how I weighted various factors. The bigger problem was acutally that it was too slow &mdash; turns out copying huge <code>Grid</code> objects over and over again down an entire tree of possible outcomes is really slow. Who would have thunk it? I didn&rsquo;t want to reimplement all of the logic I created to track number of ways to win, so I decided to go down a different route.</p>
+
+<p>One thing I realized was that I didn&rsquo;t have to track <em>every</em> move. I just needed to track the opponent&rsquo;s <em>best</em> moves and my AI&rsquo;s responses to those moves. Now, what about best? As said, I didn&rsquo;t want to reimplement a bunch of <code>Grid</code>&rsquo;s logic. If I gave up the idea of intermediate scoring, I could just determine the best move (for either player) by the one that ultimately resulted in victory at the last move&hellip; and then recursively choose the moves that give each player a better chance of victory all the way up the chain. I didn&rsquo;t quite realize it until I talked to other fellow Hacker Schoolers, but in trying to not reimplement a bunch of victory logic, I appeared to have reinvented a form of the mini-max algorithm. It&rsquo;s also much shorter and cleaner (called <code>LeanComputerPlayer</code> in the Github code).</p>
+
+<p>The new iterative breadth traversal (the board is now just a flattened list representation of the board, e.g. 0th element is the top left cell, 4th element is the center cell) using a list comprehension:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">descendants</span><span class="p">(</span><span class="n">moves</span><span class="p">,</span> <span class="n">board</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">copy_ret</span><span class="p">(</span><span class="n">brd</span><span class="p">,</span> <span class="n">mv</span><span class="p">,</span> <span class="n">plyr</span><span class="p">):</span>
+</span><span class='line'>        <span class="n">new_board</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">new_board</span><span class="p">[</span><span class="n">mv</span><span class="p">]</span> <span class="o">=</span> <span class="n">plyr</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">new_board</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">return</span> <span class="p">[</span><span class="n">solve_tree</span><span class="p">(</span><span class="n">copy_ret</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">mv</span><span class="p">,</span> <span class="n">player</span><span class="p">),</span> <span class="n">flip</span><span class="p">(</span><span class="n">player</span><span class="p">),</span> <span class="n">mv</span><span class="p">)</span>
+</span><span class='line'>            <span class="k">for</span> <span class="n">mv</span> <span class="ow">in</span> <span class="n">moves</span><span class="p">]</span>  <span class="c"># flip just switches players</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And the new recursive depth/comparison function, which sums up 1s for AI wins and -1s for human wins. It chooses max ultimate win outcomes if player is AI, choose min if player is human &mdash; since the game is played to its end conditions, these are perfect inverses of one another:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">solve_tree</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">player</span><span class="p">,</span> <span class="n">move</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">moves</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pos_moves</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">winner</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_winner</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">moves</span> <span class="o">==</span> <span class="p">[]</span> <span class="ow">or</span> <span class="n">winner</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">False</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">winner</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">False</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="p">(</span><span class="n">outcome_val</span><span class="p">[</span><span class="n">winner</span><span class="p">],</span> <span class="n">move</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_draw_value</span><span class="p">,</span> <span class="n">move</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">results</span> <span class="o">=</span> <span class="n">descendants</span><span class="p">(</span><span class="n">moves</span><span class="p">,</span> <span class="n">board</span><span class="p">,</span> <span class="n">player</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">min_or_max</span> <span class="o">=</span> <span class="nb">max</span> <span class="k">if</span> <span class="n">player</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">XO</span> <span class="k">else</span> <span class="nb">min</span>
+</span><span class='line'>        <span class="n">result</span> <span class="o">=</span> <span class="n">min_or_max</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">return</span> <span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">move</span> <span class="k">if</span> <span class="n">move</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="k">else</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>These two are helper functions within the <code>next_move</code> method in <code>LeanComputerPlayer</code>. They are kicked off by the last line in the method:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">return</span> <span class="n">solve_tree</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_board</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">XO</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And it works (AI always wins or ties) and it&rsquo;s fast! The one optimization I made after this was to have the AI automatically pick the middle cell at the beginning of the game. Since traversing down the entire tree is an operation that takes n! steps where n is the number of starting cells (9 possible moves, with 8 possible next moves for each of the 9 starting moves, and then 7 moves for each of the 8 moves&hellip; and so on), calculating the first move is much slower than subsequent moves (9! moves to check vs. 8! which is 362,880 moves vs. 40,320) and also pointless since if the AI has the first move, we know the center cell is always the optimal solution. Again, this code is on <a href="https://github.com/j-wang/tictactoe_ai">Github</a>.</p>
+
+<p>And thus, week three ends! I&rsquo;m looking forward to week four though at the moment, I don&rsquo;t quite know what I&rsquo;ll turn to next.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">James Wang</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-21T20:28:00-04:00" pubdate data-updated="true">Jun 21<span>st</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ai/'>AI</a>, <a class='category' href='/blog/categories/hacker-school/'>hacker school</a>, <a class='category' href='/blog/categories/programming/'>programming</a>, <a class='category' href='/blog/categories/python/'>python</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://j-wang.net/blog/2013/06/21/ai-for-tic-tac-toe/" data-via="Avantos" data-counturl="http://j-wang.net/blog/2013/06/21/ai-for-tic-tac-toe/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/06/14/faces-game-web-app/" title="Previous Post: Faces Game Web App">&laquo; Faces Game Web App</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/06/30/hacker-school-activity-log-jun-21st-28th/" title="Next Post: Hacker School Activity Log: Jun 21st - 28th">Hacker School Activity Log: Jun 21st - 28th &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/07/12/fun-with-python-for-loops/">Fun With Python for Loops</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/10/lambda-calculus-interpreter-and-benefits-of-ugliness/">Lambda Calculus Interpreter and Benefits of Ugliness</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/30/hacker-school-activity-log-jun-21st-28th/">Hacker School Activity Log: Jun 21st - 28th</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/21/ai-for-tic-tac-toe/">AI for Tic-Tac-Toe</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/14/faces-game-web-app/">Faces Game Web App</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/j-wang">@j-wang</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'j-wang',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+<section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/ai/'>AI (1)</a></li>
+<li class='category'><a href='/blog/categories/gui/'>GUI (1)</a></li>
+<li class='category'><a href='/blog/categories/cooking/'>cooking (2)</a></li>
+<li class='category'><a href='/blog/categories/fitness/'>fitness (1)</a></li>
+<li class='category'><a href='/blog/categories/food-science/'>food science (2)</a></li>
+<li class='category'><a href='/blog/categories/fun/'>fun (1)</a></li>
+<li class='category'><a href='/blog/categories/hacker/'>hacker (1)</a></li>
+<li class='category'><a href='/blog/categories/hacker-school/'>hacker school (5)</a></li>
+<li class='category'><a href='/blog/categories/hardware-hacking/'>hardware hacking (2)</a></li>
+<li class='category'><a href='/blog/categories/haskell/'>haskell (1)</a></li>
+<li class='category'><a href='/blog/categories/lambda-calculus/'>lambda calculus (1)</a></li>
+<li class='category'><a href='/blog/categories/programming/'>programming (6)</a></li>
+<li class='category'><a href='/blog/categories/python/'>python (5)</a></li>
+<li class='category'><a href='/blog/categories/running/'>running (1)</a></li>
+<li class='category'><a href='/blog/categories/school/'>school (1)</a></li>
+<li class='category'><a href='/blog/categories/sous-vide/'>sous vide (3)</a></li>
+<li class='category'><a href='/blog/categories/valentine-s-day/'>valentine's day (1)</a></li>
+<li class='category'><a href='/blog/categories/web/'>web (1)</a></li>
+
+  </ul>
+</section>
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/veriathon?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - James Wang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'j-wang';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://j-wang.net/blog/2013/06/21/ai-for-tic-tac-toe/';
+        var disqus_url = 'http://j-wang.net/blog/2013/06/21/ai-for-tic-tac-toe/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

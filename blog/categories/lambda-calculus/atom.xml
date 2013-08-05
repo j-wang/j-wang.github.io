@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: lambda calculus | James's Blog]]></title>
+  <link href="http://j-wang.net/blog/categories/lambda-calculus/atom.xml" rel="self"/>
+  <link href="http://j-wang.net/"/>
+  <updated>2013-08-05T02:35:09-04:00</updated>
+  <id>http://j-wang.net/</id>
+  <author>
+    <name><![CDATA[James Wang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Lambda Calculus Interpreter and Benefits of Ugliness]]></title>
+    <link href="http://j-wang.net/blog/2013/07/10/lambda-calculus-interpreter-and-benefits-of-ugliness/"/>
+    <updated>2013-07-10T23:19:00-04:00</updated>
+    <id>http://j-wang.net/blog/2013/07/10/lambda-calculus-interpreter-and-benefits-of-ugliness</id>
+    <content type="html"><![CDATA[<p>For the past week, I&rsquo;ve been working on a lambda calculus interpreter (<a href="https://github.com/j-wang/untyped-lambda-calculus-interpreter">Github</a>) in order to try to better understand the concepts in lambda calculus. It&rsquo;s been a great experience, especially since I&rsquo;ve been coding it in Python. Normally, if I were writing the interpreter in a language like SML or Haskell, I would rely heavily on pattern-matching.</p>
+
+<p>Using pattern-matching is a pretty natural fit for creating an interpreter, given the operations involved in lexing, parsing, and reduction/evaluation &mdash; specifically, handling a particular encountered block depending on the token or keyword/structure encountered.<!-- more --> An example of this idea implemented in a Haskell lexer is below:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='haskell'><span class='line'><span class="nf">lexer</span> <span class="ow">::</span> <span class="kt">String</span> <span class="o">&amp;</span><span class="n">ndash</span><span class="p">;</span><span class="o">&gt;</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span>
+</span><span class='line'><span class="nf">lexer</span> <span class="kt">[]</span> <span class="ow">=</span> <span class="kt">[]</span>
+</span><span class='line'><span class="nf">lexer</span> <span class="p">(</span><span class="n">x</span><span class="kt">:</span><span class="n">xs</span><span class="p">)</span> <span class="o">=&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="kr">case</span> <span class="n">x</span> <span class="kr">of</span>
+</span><span class='line'>  <span class="sc">&#39;(&#39;</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="s">&quot;(&quot;</span> <span class="kt">:</span> <span class="n">lexer</span> <span class="n">xs</span>
+</span><span class='line'>  <span class="sc">&#39;)&#39;</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="s">&quot;)&quot;</span> <span class="kt">:</span> <span class="n">lexer</span> <span class="n">xs</span>
+</span><span class='line'>  <span class="sc">&#39;.&#39;</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="s">&quot;.&quot;</span> <span class="kt">:</span> <span class="n">lexer</span> <span class="n">xs</span>
+</span><span class='line'>  <span class="sc">&#39; &#39;</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">lexer</span> <span class="n">xs</span>
+</span><span class='line'>  <span class="kr">_</span>   <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="kr">let</span> <span class="n">chunkWord</span> <span class="kt">[]</span> <span class="ow">=</span> <span class="kt">[]</span>
+</span><span class='line'>             <span class="n">chunkWord</span> <span class="p">(</span><span class="n">y</span><span class="kt">:</span><span class="n">ys</span><span class="p">)</span> <span class="ow">=</span>
+</span><span class='line'>                 <span class="kr">case</span> <span class="n">y</span> <span class="kr">of</span>
+</span><span class='line'>                   <span class="sc">&#39; &#39;</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="kt">[]</span>
+</span><span class='line'>                   <span class="sc">&#39;)&#39;</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="kt">[]</span>
+</span><span class='line'>                   <span class="sc">&#39;.&#39;</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="kt">[]</span>
+</span><span class='line'>                   <span class="kr">_</span>   <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">y</span> <span class="kt">:</span> <span class="n">chunkWord</span> <span class="n">ys</span>
+</span><span class='line'>             <span class="n">word</span> <span class="ow">=</span> <span class="n">chunkWord</span> <span class="p">(</span><span class="n">x</span><span class="kt">:</span><span class="n">xs</span><span class="p">)</span>
+</span><span class='line'>         <span class="kr">in</span> <span class="n">word</span> <span class="kt">:</span> <span class="p">(</span><span class="n">lexer</span> <span class="o">$</span> <span class="n">drop</span> <span class="p">(</span><span class="n">length</span> <span class="n">word</span><span class="p">)</span> <span class="p">(</span><span class="n">x</span><span class="kt">:</span><span class="n">xs</span><span class="p">))</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>The lexer takes a string and iterates through it character by character. Each character encountered has specified a certain action (even if the actions are simple in this case). A <code>'('</code> character produces the action of creating a cons list of the string <code>"("</code> and the result of lexer on the rest of the string. An analogous action happens for <code>')'</code>, <code>'.'</code>, and <code>' '</code>. For anything else (which has to then be a keyword or variable in lambda calculus), chunk it together as a string and cons it onto the rest of the the string (sans chunked string). It&rsquo;s not bad, though I imagine I&rsquo;d probably be able to write this in an even more concise way if I knew Haskell better.</p>
+
+<p>If I were to translate this code literally to Python, I would enter <code>elif</code> hell, since Python has neither pattern matching or even case expressions. Although beauty is in the eye of the beholder, a massive block of <code>elif</code>s is not what I consider beautiful code. For such a small codeblock, it isn&rsquo;t too bad, but even so, it looks verbose when in Python.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">Lexer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="nd">@classmethod</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">tokenize</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span class='line'>    <span class="n">first_letter</span> <span class="o">=</span> <span class="bp">True</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">string</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">char</span> <span class="o">==</span> <span class="s">&#39;(&#39;</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+</span><span class='line'>            <span class="n">first_letter</span> <span class="o">=</span> <span class="bp">True</span>
+</span><span class='line'>        <span class="k">elif</span> <span class="n">char</span> <span class="o">==</span> <span class="s">&#39;)&#39;</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+</span><span class='line'>            <span class="n">first_letter</span> <span class="o">=</span> <span class="bp">True</span>
+</span><span class='line'>        <span class="k">elif</span> <span class="n">char</span> <span class="o">==</span> <span class="s">&#39;.&#39;</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">elif</span> <span class="n">char</span> <span class="o">==</span> <span class="s">&#39; &#39;</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">first_letter</span> <span class="o">=</span> <span class="bp">True</span>
+</span><span class='line'>        <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">if</span> <span class="n">first_letter</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
+</span><span class='line'>                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+</span><span class='line'>                <span class="n">first_letter</span> <span class="o">=</span> <span class="bp">False</span>
+</span><span class='line'>            <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>                <span class="n">result</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">char</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">return</span> <span class="n">result</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Again, it&rsquo;s not <em>that</em> bad, given how short the set of cases there are here (I&rsquo;ll have to actually find a longer interpreter to give a properly horrifying example). In fact, taking into account the <code>chunkWord</code> gymnastics I had to do in Haskell to satisfy the type checker (though that might just be my ignorance in Haskell), it might even look nicer to some (aside from the <code>first_letter</code> gymnastics required here because you can&rsquo;t easily skip ahead characters in a Python <code>for</code> loop&hellip; a topic for another post). However, even here the specific case pattern looks annoyingly verbose and repetitive, at least to my eyes (it takes up two lines at minimum and starts to blur together with many, many <code>elif</code>s or, alternatively, spaghetti code where the operations are separated from the call site if you opt for using a dictionary to handle each case&hellip; especially if you have to define the operations as functions separate from the dictionary).</p>
+
+<p>However, this type of ugliness does comes with an advantage. The Haskell version actually has a lot of code repetition which is made tolerable and even pleasant through pattern-matching. Being forced to think more cleverly about how to express one&rsquo;s ideas in a succinct way to counter that ugliness can give one deeper insight into what&rsquo;s actually going on. For example, the below code more explicitly acknowledges the code repetition and handles the <code>for</code> skipping-ahead challenge in a cleaner way (to my eyes), by accumulating characters when the current character is not one of the special delimiters and clearing it when it reaches one of those delimiters.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">Lexer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="nd">@classmethod</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">tokenize</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span class='line'>    <span class="n">temp</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">string</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">char</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;(&#39;</span><span class="p">,</span> <span class="s">&#39;)&#39;</span><span class="p">,</span> <span class="s">&#39;.&#39;</span><span class="p">,</span> <span class="s">&#39; &#39;</span><span class="p">]:</span>
+</span><span class='line'>            <span class="k">if</span> <span class="n">temp</span> <span class="o">!=</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+</span><span class='line'>                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+</span><span class='line'>                <span class="n">temp</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+</span><span class='line'>            <span class="k">if</span> <span class="n">char</span> <span class="o">!=</span> <span class="s">&#39; &#39;</span><span class="p">:</span>
+</span><span class='line'>                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">temp</span> <span class="o">=</span> <span class="n">temp</span> <span class="o">+</span> <span class="n">char</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">if</span> <span class="n">temp</span> <span class="o">!=</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">return</span> <span class="n">result</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Even though this can probably also be improved upon, being forced to think harder and attack the problem with multiple paradigms was helpful. The fact that Python is not great at handling multiple cases in a neat, clean way was actually beneficial for my understanding in this case.</p>
+]]></content>
+  </entry>
+  
+</feed>

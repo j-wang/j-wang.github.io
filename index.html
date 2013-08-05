@@ -9,7 +9,7 @@
   <meta name="author" content="James Wang">
 
   
-  <meta name="description" content="I only started this log last week, but figured it would be helpful to start tracking my progress at Hacker School somewhere. As a side benefit, it &hellip;">
+  <meta name="description" content="As mentioned in my last post, while working on a lambda calculus interpreter, I encountered an issue where I wanted to skip ahead in a for loop, but &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -50,7 +50,7 @@
   <header role="banner"><hgroup>
   <h1><a href="/">James's Blog</a></h1>
   
-    <h2>Cooking, Coding, Creating, and Caring</h2>
+    <h2>Cookery, Hackery, and Hopefully Not Quackery</h2>
   
 </hgroup>
 
@@ -83,6 +83,90 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2013/07/12/fun-with-python-for-loops/">Fun With Python for Loops</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-12T13:07:00-04:00" pubdate data-updated="true">Jul 12<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/07/12/fun-with-python-for-loops/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>As mentioned in my <a href="/blog/2013/07/10/lambda-calculus-interpreter-and-benefits-of-ugliness/">last post</a>, while working on a lambda calculus interpreter, I encountered an issue where I wanted to skip ahead in a <em>for</em> loop, but found that I couldn&rsquo;t. Although I initially put it aside, when I was getting a code review on the interpreter from Tom, I remembered the issue again and did some further investigation on the topic.</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/07/12/fun-with-python-for-loops/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/07/10/lambda-calculus-interpreter-and-benefits-of-ugliness/">Lambda Calculus Interpreter and Benefits of Ugliness</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-10T23:19:00-04:00" pubdate data-updated="true">Jul 10<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/07/10/lambda-calculus-interpreter-and-benefits-of-ugliness/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>For the past week, I&rsquo;ve been working on a lambda calculus interpreter (<a href="https://github.com/j-wang/untyped-lambda-calculus-interpreter">Github</a>) in order to try to better understand the concepts in lambda calculus. It&rsquo;s been a great experience, especially since I&rsquo;ve been coding it in Python. Normally, if I were writing the interpreter in a language like SML or Haskell, I would rely heavily on pattern-matching.</p>
+
+<p>Using pattern-matching is a pretty natural fit for creating an interpreter, given the operations involved in lexing, parsing, and reduction/evaluation &mdash; specifically, handling a particular encountered block depending on the token or keyword/structure encountered.</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/07/10/lambda-calculus-interpreter-and-benefits-of-ugliness/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2013/06/30/hacker-school-activity-log-jun-21st-28th/">Hacker School Activity Log: Jun 21st - 28th</a></h1>
     
     
@@ -108,9 +192,9 @@
   </header>
 
 
-  <div class="entry-content"><p>I only started this log last week, but figured it would be helpful to start tracking my progress at Hacker School somewhere. As a side benefit, it might give some of the people who have asked me what I&rsquo;m doing at Hacker School some insight into what a typical day might be like &mdash; though do keep in mind I&rsquo;ve likely not captured literally every single thing and this particular week was more chaotic and scattered than average.</p>
+  <div class="entry-content"><p>I only started this log last week, but figured it would be helpful to start tracking more of what I do at Hacker School, apart from my bigger projects. As a side benefit, it might give some of the people who have asked me what I&rsquo;m doing at Hacker School some insight into what a typical day might be like &mdash; though do keep in mind I&rsquo;ve likely not captured literally every single thing and this particular week was more chaotic and scattered than average.</p>
 
-<p>This is more of an experiemental idea right now, but if it works out well, I&rsquo;ll try to post these at the end of each week.</p>
+<p>This is more of an experimental idea right now, but if it works out well, I&rsquo;ll try to post these at the end of each week.</p>
 
 </div>
   
@@ -118,6 +202,177 @@
     <footer>
       <a rel="full-article" href="/blog/2013/06/30/hacker-school-activity-log-jun-21st-28th/">Read on &rarr;</a>
     </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/06/21/ai-for-tic-tac-toe/">AI for Tic-Tac-Toe</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-21T20:28:00-04:00" pubdate data-updated="true">Jun 21<span>st</span>, 2013</time>
+        
+         | <a href="/blog/2013/06/21/ai-for-tic-tac-toe/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>As part of my Hacker School application, I wrote a simple <a href="https://github.com/j-wang/hacker-school/blob/master/tictactoe.py">Tic-Tac-Toe application</a> for my &ldquo;program written from scratch.&rdquo; My choice was driven primarily by the fact that the application itself suggested a Tic-Tac-Toe application. As such, I expected many other people would write Tic-Tac-Toe (I was very right in this regard) and wanted to do something unique. My original ambitious plan was to write an AI for it. Unfortunately, I had to quickly abandon this plan, since I realized 1) I had no idea how I would go about creating one, and 2) I didn&rsquo;t have enough time to figure it out before the application was due. As such, I had to settle for infinitely expandable Tic-Tac-Toe (theoretically anyway &mdash; at greater than 15 x 15, it becomes quite visually ugly).</p>
+
+<p>Now that I do have the time, I definitely wanted to tackle writing an AI for Tic-Tac-Toe. However, I didn&rsquo;t want to just find and apply an algorithm. I wanted to have the full challenge and experience of working through how one would create an AI.</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/06/21/ai-for-tic-tac-toe/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/06/14/faces-game-web-app/">Faces Game Web App</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-14T19:09:00-04:00" pubdate data-updated="true">Jun 14<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/06/14/faces-game-web-app/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Last week, while working on my <a href="/blog/2013/06/07/first-project-simple-text-editor/">simple text editor</a>, I chatted with fellow Hacker Schoolers about what was actually being used in the industry nowadays for GUIs. The answer I most commonly heard was that the tech world had largely moved on to web (and mobile) apps. No one who I spoke to actually worked on desktop applications. The insight here is quite fascinating to me.</p>
+
+<p>Developers and users are a chicken-and-egg problem. To get developers to work on a platform, you need users. To have users, you need a strong developer base that creates appealing and useful apps. It&rsquo;s a small sample set, but the lopsided nature of the sentiments suggest to me that either developers have a stronger lean towards web than users or the companies that work in web are much more interesting/appealing to the strong programmers that Hacker School selects for and attracts. Again, it&rsquo;s too small a sample set to draw sweeping conclusions, but it is an interesting data point. Nevertheless, these conversations helped point me to my next project: a web app.</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/06/14/faces-game-web-app/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/06/07/first-project-simple-text-editor/">First Project: Simple Text Editor</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-07T15:31:00-04:00" pubdate data-updated="true">Jun 7<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/06/07/first-project-simple-text-editor/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have a lot of project ideas that I want to play around with during Hacker School. However, my primary goal &mdash; the thread that ties all of these disparate ideas together &mdash; is to tackle areas of programming that I have never encountered. If an area of programming is &ldquo;magical&rdquo; to me, I want to dispel that magic.</p>
+
+<p>First up on that list of &ldquo;magical&rdquo; topics is graphical user interfaces (GUIs). I remember trying to experiment with GUIs in a group project during high school Java using Swing and AWT. I also remember quitting out of disgust after only a brief foray into their APIs, leaving one of my poor teammates the painful task of programming our project&rsquo;s GUI, while I worked on fun game logic. Since that brief attempt, I have never attempted to play around with GUIs ever again, so I have remained mystified as to how I would actually go about creating them. So, after nearly a decade, I&rsquo;ve decided to try my hand at it again.</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/06/07/first-project-simple-text-editor/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/06/03/hacker-school-begins/">Hacker School Begins</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-03T23:34:00-04:00" pubdate data-updated="true">Jun 3<span>rd</span>, 2013</time>
+        
+         | <a href="/blog/2013/06/03/hacker-school-begins/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Hacker School has finally begun! The past few days have been a whirlwind of activity. Last week, I finished my last day at work, Liz and I packed up our apartment and got it loaded on a truck for California, loaded the rest of our stuff into the car, moved to NYC, and made an extremely difficult decision which coast we wanted to be on (Liz for her engineering/design programs, and me for business school).</p>
+
+<p>It&rsquo;s been exhausting, mentally and physically, and I haven&rsquo;t had much sleep at all. The exit schedule will be just as crazy. Just like how I left work and hit the ground running in NYC for Hacker School, I&rsquo;m going to have to leave Hacker School a week early on Friday and start business school at Berkeley on Monday.</p>
+
+<p>Ah well, I knew what I signed up for, and I wouldn&rsquo;t miss this opportunity for a piddling few months of &ldquo;break.&rdquo; This will be my break. I&rsquo;m exhilarated to spend three months becoming a better programmer, surrounded by people trying to do the same thing. Hearing about what some of my batch-mates do and plan to do when I met them this morning was great. There&rsquo;s a lot of experienced programmers here that I look forward to working with and learning from. Here&rsquo;s to <a href="https://www.hackerschool.com/">never graduating</a>!</p>
+</div>
+  
   
 
 
@@ -266,153 +521,9 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/06/sous-vide-porchetta/">Sous Vide Porchetta</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-06T00:00:00-04:00" pubdate data-updated="true">Oct 6<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/10/06/sous-vide-porchetta/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>One thing that has bothered me about all of my experimentation with sous vide cooking is that everything that I&rsquo;ve done could technically be done with normal cooking methods. Despite making the best chicken, steak, and poached eggs (or the only poached eggs) that I&rsquo;ve ever made, it was possible for me to still cook this food with more conventional methods. I wanted something that is largely unachievable with any other method.</p>
-
-<p>Enter the deep-fried porchetta, which I was inspired to make from <a href="http://www.seriouseats.com/2011/12/the-food-lab-deep-fried-sous-vide-36-hour-all-belly-porchetta.html?ref=search">this recipe</a></p>
-
-<p>It pretty much captures <a href="/blog/2012/01/29/theory-of-sous-vide/">what I love</a> about sous vide &mdash; the ability to separate sterilizing food from creating the texture of food. Porchetta is hard because it&rsquo;s difficult to fully cook the meat, keep the inside tender, and make the outside crispy (but not dry) all at the same time. That&rsquo;s because there&rsquo;s only one blunt object method of cooking it used (dry heat blasted outside in). Here, we can elegantly separate the parts (sterilization and tenderizing, vs. crisping&hellip; or deep-frying) by using separate cooking techniques, the key ones being sous vide and deep-frying. I couldn&rsquo;t wait to try it.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/10/06/sous-vide-porchetta/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/05/12/diy-immersion-circulator/">DIY Immersion Circulator</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-12T00:00:00-04:00" pubdate data-updated="true">May 12<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/05/12/diy-immersion-circulator/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>For a few months now, I&rsquo;ve been using a $25 deep fryer I found at an estate sale to cook sous vide. It has a bit of a crack and is somewhat old, so I&rsquo;d probably hesitate using it for real deep frying, but I wasn&rsquo;t intending to deep fry with it anyway.</p>
-
-<div align='center'><div align='center'><span class='caption-wrapper'><img class='caption' src='/images/posts/deep_fryer.jpg' width='' height='' alt='This thing was definitely a steal for the price... though maybe not for someone who actually wanted to do some deep frying -- you'd have to factor in potential medical bills.' title='This thing was definitely a steal for the price... though maybe not for someone who actually wanted to do some deep frying -- you'd have to factor in potential medical bills.'><span class='caption-text'>This thing was definitely a steal for the price&#8230; though maybe not for someone who actually wanted to do some deep frying &#8211; you&#8217;d have to factor in potential medical bills.</span></span></div></div>
-
-
-<p>It has a built-in thermocouple, has a nice metal basket with handle to pull the heated food out when done, and already has its own (powerful) heating element &mdash; essentially it has all the components necessary for a good sous vide machine. I even tested its temperature accuracy against a trustworthy thermometer and it came out pretty close. What could be better? (Spoiler alert: There is something much better.)</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/05/12/diy-immersion-circulator/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/01/29/theory-of-sous-vide/">Theory of Sous Vide</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-01-29T00:00:00-05:00" pubdate data-updated="true">Jan 29<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/01/29/theory-of-sous-vide/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This post gets a bit technical and geeky, but I think understanding the theory of cooking is pretty important to cooking well (and consistently). And I can&rsquo;t stop talking about to people in person anyway, so what the heck.</p>
-
-<p>I&rsquo;ve experimented with a lot of different cooking techniques over time (clay bakers, pressure cookers, etc.), but nothing has really excited me as much as sous vide. What I really love about sous vide is that it lets you very cleanly separate the two essential goals of cooking:</p>
-
-<ol>
-<li>Sterilization of food</li>
-<li>Tenderizing/texturizing food</li>
-</ol>
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/01/29/theory-of-sous-vide/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/2/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -425,23 +536,23 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/07/12/fun-with-python-for-loops/">Fun With Python for Loops</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/10/lambda-calculus-interpreter-and-benefits-of-ugliness/">Lambda Calculus Interpreter and Benefits of Ugliness</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/06/30/hacker-school-activity-log-jun-21st-28th/">Hacker School Activity Log: Jun 21st - 28th</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/03/28/barefoot-running-and-half-marathons/">Barefoot Running and Half Marathons</a>
+        <a href="/blog/2013/06/21/ai-for-tic-tac-toe/">AI for Tic-Tac-Toe</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/03/18/strange-prank-idea/">Strange Prank Idea</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/02/22/raspberry-pi-for-valentines-day/">Raspberry Pi for Valentine&#8217;s Day</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/10/06/sous-vide-porchetta/">Sous Vide Porchetta</a>
+        <a href="/blog/2013/06/14/faces-game-web-app/">Faces Game Web App</a>
       </li>
     
   </ul>
@@ -479,16 +590,24 @@
 <section>
   <h1>Categories</h1>
   <ul id="categories">
-    <li class='category'><a href='/blog/categories/cooking/'>cooking (2)</a></li>
+    <li class='category'><a href='/blog/categories/ai/'>AI (1)</a></li>
+<li class='category'><a href='/blog/categories/gui/'>GUI (1)</a></li>
+<li class='category'><a href='/blog/categories/cooking/'>cooking (2)</a></li>
 <li class='category'><a href='/blog/categories/fitness/'>fitness (1)</a></li>
 <li class='category'><a href='/blog/categories/food-science/'>food science (2)</a></li>
 <li class='category'><a href='/blog/categories/fun/'>fun (1)</a></li>
-<li class='category'><a href='/blog/categories/hacker-school/'>hacker school (1)</a></li>
+<li class='category'><a href='/blog/categories/hacker/'>hacker (1)</a></li>
+<li class='category'><a href='/blog/categories/hacker-school/'>hacker school (5)</a></li>
 <li class='category'><a href='/blog/categories/hardware-hacking/'>hardware hacking (2)</a></li>
-<li class='category'><a href='/blog/categories/programming/'>programming (1)</a></li>
+<li class='category'><a href='/blog/categories/haskell/'>haskell (1)</a></li>
+<li class='category'><a href='/blog/categories/lambda-calculus/'>lambda calculus (1)</a></li>
+<li class='category'><a href='/blog/categories/programming/'>programming (6)</a></li>
+<li class='category'><a href='/blog/categories/python/'>python (5)</a></li>
 <li class='category'><a href='/blog/categories/running/'>running (1)</a></li>
+<li class='category'><a href='/blog/categories/school/'>school (1)</a></li>
 <li class='category'><a href='/blog/categories/sous-vide/'>sous vide (3)</a></li>
 <li class='category'><a href='/blog/categories/valentine-s-day/'>valentine&#8217;s day (1)</a></li>
+<li class='category'><a href='/blog/categories/web/'>web (1)</a></li>
 
   </ul>
 </section>
