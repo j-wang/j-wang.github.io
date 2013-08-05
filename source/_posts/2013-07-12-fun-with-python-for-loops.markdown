@@ -135,7 +135,6 @@ for i in iter_this:
 
 On the other hand, if you need to skip around a loop (backwards as well as forwards), it is probably better (and clearer) to just use a while loop.
 
-while:
 {% codeblock lang:python %}
 i = 2
 end = 12

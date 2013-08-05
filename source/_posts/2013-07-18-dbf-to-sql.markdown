@@ -1,0 +1,11 @@
+---
+layout: post
+title: "DBF to SQL"
+date: 2013-07-18 14:42
+comments: true
+categories: [programming, python, hacker school]
+---
+
+This is a somewhat less exciting project and announcement, but I put together a utility that helps translate Foxpro DBF to SQLite. In case you don't recognize the word Foxpro, it's a Microsoft DBMS whose final version was released over five years ago (and whose heyday was nearly two decades ago). WomensTrust has a database that I'll be getting a hold of soon, and I wanted to actually be able to use modern tools to work with the data instead of having it trapped in a sunsetted technology. I tested it on a sample database, and it works fine, if a bit messily. It's directly reading and processing the data in the DBF tables. It tried to preserve the format and structure of the tables, but it's not perfect.
+
+I haven't tested the script with any other dialects of SQL, but since I'm just gluing together a Python dbf library and SQLAlchemy, it should require minimal effort to adapt it (though once you've translated DBF to SQLite, there are far better tools available for getting it into other dialects of SQL). The code is [here](https://github.com/j-wang/dbf_to_sql).
