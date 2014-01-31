@@ -17,7 +17,6 @@ $title-color: #dedede;
 //$footer-bg-front: image-url('noise.png');
 //$footer-bg-back: linear-gradient(lighten($footer-bg, 8), $footer-bg, darken($footer-bg, 11));
 
-
 /* To use the light Solarized highlighting theme uncomment the following line */
 //$solarized: light;
 
@@ -59,33 +58,34 @@ $solar-green:     #4D8EFA;                        //functions, e.g. map
 // ////////////////////////////////////////
 // change the background colors
 //
+
 html {
-  background: #EEEEEE !important;
+  background: img-url('grey_wash_wall.png') top left;
 }
-body {
-  > div {
-    background: #fff !important;
-    > div {
-      background: #fff !important;
-      }
-  }
-}
-$main-bg: #ffffff !default;
-$page-bg: #ffffff !default;
+/* body { */
+/*   > div { */
+/*     background: #fff !important; */
+/*     > div { */
+/*       background: #fff !important; */
+/*       } */
+/*   } */
+/* } */
+/* $main-bg: #ffffff !default; */
+/* $page-bg: #ffffff !default; */
 
 // ////////////////////////////////////////
 // change the nav bar
 //
-$nav-bg: #fff;
-$nav-bg-front: #fff;
-$nav-bg-back: #fff;
-$nav-color: darken($nav-bg, 78) !default;
-$nav-color-hover: darken($nav-color, 25) !default;
-$nav-border: darken($nav-bg, 50) !default;
-$nav-border-top: darken($nav-bg, 33) !default;
-$nav-border-bottom: darken($nav-bg, 33) !default;
-$nav-border-left: darken($nav-bg, 11) !default;
-$nav-border-right: lighten($nav-bg, 7) !default;
+/* $nav-bg: #fff; */
+/* $nav-bg-front: #fff; */
+/* $nav-bg-back: #fff; */
+/* $nav-color: darken($nav-bg, 78) !default; */
+/* $nav-color-hover: darken($nav-color, 25) !default; */
+/* $nav-border: darken($nav-bg, 50) !default; */
+/* $nav-border-top: darken($nav-bg, 33) !default; */
+/* $nav-border-bottom: darken($nav-bg, 33) !default; */
+/* $nav-border-left: darken($nav-bg, 11) !default; */
+/* $nav-border-right: lighten($nav-bg, 7) !default; */
 
 
 // ////////////////////////////////////////
