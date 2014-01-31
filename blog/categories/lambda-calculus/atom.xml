@@ -4,7 +4,7 @@
   <title><![CDATA[Category: lambda calculus | James's Blog]]></title>
   <link href="http://j-wang.net/blog/categories/lambda-calculus/atom.xml" rel="self"/>
   <link href="http://j-wang.net/"/>
-  <updated>2013-08-06T11:51:08-04:00</updated>
+  <updated>2014-01-31T02:46:52-08:00</updated>
   <id>http://j-wang.net/</id>
   <author>
     <name><![CDATA[James Wang]]></name>
@@ -16,13 +16,13 @@
   <entry>
     <title type="html"><![CDATA[Lambda Calculus Interpreter and Benefits of Ugliness]]></title>
     <link href="http://j-wang.net/blog/2013/07/10/lambda-calculus-interpreter-and-benefits-of-ugliness/"/>
-    <updated>2013-07-10T23:19:00-04:00</updated>
+    <updated>2013-07-10T23:19:00-07:00</updated>
     <id>http://j-wang.net/blog/2013/07/10/lambda-calculus-interpreter-and-benefits-of-ugliness</id>
     <content type="html"><![CDATA[<p>For the past week, I&rsquo;ve been working on a lambda calculus interpreter (<a href="https://github.com/j-wang/untyped-lambda-calculus-interpreter">Github</a>) in order to try to better understand the concepts in lambda calculus. It&rsquo;s been a great experience, especially since I&rsquo;ve been coding it in Python. Normally, if I were writing the interpreter in a language like SML or Haskell, I would rely heavily on pattern-matching.</p>
 
 <p>Using pattern-matching is a pretty natural fit for creating an interpreter, given the operations involved in lexing, parsing, and reduction/evaluation &mdash; specifically, handling a particular encountered block depending on the token or keyword/structure encountered.<!-- more --> An example of this idea implemented in a Haskell lexer is below:</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -70,7 +70,7 @@
 
 <p>If I were to translate this code literally to Python, I would enter <code>elif</code> hell, since Python has neither pattern matching or even case expressions. Although beauty is in the eye of the beholder, a massive block of <code>elif</code>s is not what I consider beautiful code. For such a small codeblock, it isn&rsquo;t too bad, but even so, it looks verbose when in Python.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -134,7 +134,7 @@
 
 <p>However, this type of ugliness does comes with an advantage when trying a learn a concept. The Haskell version actually has a lot of code repetition which is made tolerable and even pleasant through pattern-matching. Being forced to think more cleverly about how to express one&rsquo;s ideas in a succinct way to counter that ugliness can give one deeper insight into what&rsquo;s actually going on. For example, the below code more explicitly acknowledges the code repetition and handles the <code>for</code> skipping-ahead challenge in a cleaner way (to my eyes), by accumulating characters when the current character is not one of the special delimiters and clearing it when it reaches one of those delimiters.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>

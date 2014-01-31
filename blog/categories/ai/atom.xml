@@ -4,7 +4,7 @@
   <title><![CDATA[Category: AI | James's Blog]]></title>
   <link href="http://j-wang.net/blog/categories/ai/atom.xml" rel="self"/>
   <link href="http://j-wang.net/"/>
-  <updated>2013-08-06T11:51:08-04:00</updated>
+  <updated>2014-01-31T02:46:52-08:00</updated>
   <id>http://j-wang.net/</id>
   <author>
     <name><![CDATA[James Wang]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[AI for Tic-Tac-Toe]]></title>
     <link href="http://j-wang.net/blog/2013/06/21/ai-for-tic-tac-toe/"/>
-    <updated>2013-06-21T20:28:00-04:00</updated>
+    <updated>2013-06-21T20:28:00-07:00</updated>
     <id>http://j-wang.net/blog/2013/06/21/ai-for-tic-tac-toe</id>
     <content type="html"><![CDATA[<p>As part of my Hacker School application, I wrote a simple <a href="https://github.com/j-wang/hacker-school/blob/master/tictactoe.py">Tic-Tac-Toe application</a> for my &ldquo;program written from scratch.&rdquo; My choice was driven primarily by the fact that the application itself suggested a Tic-Tac-Toe application. As such, I expected many other people would write Tic-Tac-Toe (I was very right in this regard) and wanted to do something unique. My original ambitious plan was to write an AI for it. Unfortunately, I had to quickly abandon this plan, since I realized 1) I had no idea how I would go about creating one, and 2) I didn&rsquo;t have enough time to figure it out before the application was due. As such, I had to settle for infinitely expandable Tic-Tac-Toe (theoretically anyway &mdash; at greater than 15 x 15, it becomes quite visually ugly).</p>
 
@@ -28,7 +28,7 @@
 
 <p>The basic algorithm involved is iterative recursive, which is a pattern that I&rsquo;m finding I like a lot in Python. Iteratively traverse all cells of the grid (breadth):</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -56,7 +56,7 @@
 
 <p>The complicated code below (difficult to read mainly because it builds off of elements of the <code>Grid</code> class that I never exposed or expected to expose) shows the digging. It returns a tuple with win-loss &ldquo;scores&rdquo;, and the moves it took to reach that outcome. The &ldquo;scores&rdquo; are actually a pair of scores: the first is based on the outcome (win/loss/tie &mdash; though wins with fewer moves are given higher scores) and the second is based on how many more ways the AI could have won (and how close it was) vs. the player. Since many outcomes can be the same (win in same number of moves), I use the relative number of paths and closeness to victory as a tiebreaker.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -128,7 +128,7 @@
 
 <p>The new iterative breadth traversal (the board is now just a flattened list representation of the board, e.g. 0th element is the top left cell, 4th element is the center cell) using a list comprehension:</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -156,7 +156,7 @@
 
 <p>And the new recursive depth/comparison function, which sums up 1s for AI wins and -1s for human wins. It chooses max ultimate win outcomes if player is AI, choose min if player is human &mdash; since the game is played to its end conditions, these are perfect inverses of one another:</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -194,7 +194,7 @@
 
 <p>These two are helper functions within the <code>next_move</code> method in <code>LeanComputerPlayer</code>. They are kicked off by the last line in the method:</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">return</span> <span class="n">solve_tree</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_board</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">XO</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 

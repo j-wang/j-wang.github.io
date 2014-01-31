@@ -4,7 +4,7 @@
   <title><![CDATA[James's Blog]]></title>
   <link href="http://j-wang.net/atom.xml" rel="self"/>
   <link href="http://j-wang.net/"/>
-  <updated>2013-08-06T11:51:08-04:00</updated>
+  <updated>2014-01-31T02:46:52-08:00</updated>
   <id>http://j-wang.net/</id>
   <author>
     <name><![CDATA[James Wang]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[DBF to SQL]]></title>
     <link href="http://j-wang.net/blog/2013/07/18/dbf-to-sql/"/>
-    <updated>2013-07-18T14:42:00-04:00</updated>
+    <updated>2013-07-18T14:42:00-07:00</updated>
     <id>http://j-wang.net/blog/2013/07/18/dbf-to-sql</id>
     <content type="html"><![CDATA[<p>This is a somewhat less exciting project and announcement, but I put together a utility that helps translate Foxpro DBF to SQLite. In case you don&rsquo;t recognize the word Foxpro, it&rsquo;s a Microsoft DBMS whose final version was released over five years ago (and whose heyday was nearly two decades ago). WomensTrust has a database that I&rsquo;ll be getting a hold of soon, and I wanted to actually be able to use modern tools to work with the data instead of having it trapped in a sunsetted technology. I tested it on a sample database, and it works fine, if a bit messily. It&rsquo;s directly reading and processing the data in the DBF tables. It tried to preserve the format and structure of the tables, but it&rsquo;s not perfect.</p>
 
@@ -25,9 +25,9 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Fun with Python For Loops]]></title>
+    <title type="html"><![CDATA[Fun With Python for Loops]]></title>
     <link href="http://j-wang.net/blog/2013/07/12/fun-with-python-for-loops/"/>
-    <updated>2013-07-12T13:07:00-04:00</updated>
+    <updated>2013-07-12T13:07:00-07:00</updated>
     <id>http://j-wang.net/blog/2013/07/12/fun-with-python-for-loops</id>
     <content type="html"><![CDATA[<p>As mentioned in my <a href="http://j-wang.net/blog/2013/07/10/lambda-calculus-interpreter-and-benefits-of-ugliness/">last post</a>, while working on a lambda calculus interpreter, I encountered an issue where I wanted to skip ahead in a <em>for</em> loop, but found that I couldn&rsquo;t. Although I initially put it aside, when I was getting a code review on the interpreter from Tom, I remembered the issue again and did some further investigation on the topic.<!-- more --></p>
 
@@ -35,7 +35,7 @@
 
 <p>It turns out that unlike <em>for</em> loops in Java or C++, the index variable (e.g. <code>i</code> in <code>for (int i = 0; i &lt; 10; i++)</code> is drawn directly from the object following the <code>in</code> keyword each time the <em>for</em> loop goes around. As such, changing what the index <code>i</code> references in the equivalent Python loop <code>for i in range(10)</code> won&rsquo;t affect the next round of the <em>for</em> loop (though it will affect anything following the reassignment in the block).</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 </pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
@@ -62,7 +62,7 @@
 
 <p>Additionally, after you provide Python with an initial reference to an object with an iterable method in a <em>for</em> loop, Python accesses the object directly without referring back to the reference variable passed into the <em>for</em> loop. So, what does this mean? Well, it means that you can&rsquo;t reassign the <em>for</em> loop&rsquo;s iterable object in the middle of a <em>for</em> loop.</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -95,7 +95,7 @@
 
 <p>We know what the below code does:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 </pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">iter_this</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
@@ -120,7 +120,7 @@
 
 <p>However, this does something different:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -143,7 +143,7 @@
 
 <p>So what happened? Well, let&rsquo;s take a closer look:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -186,7 +186,7 @@
 
 <p>This method is what I ultimately settled on for parts of my lambda calculus interpreter that needed to skip elements. It made sense since my <em>for</em> loop skipping would always be in the forward direction (I would never need to backtrack in my <em>for</em> loop) and this makes it crystal clear what I&rsquo;m doing.</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -221,7 +221,7 @@
 
 <p>On the other hand, if you need to skip around a loop (backwards as well as forwards), it is probably better (and clearer) to just use a while loop.</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -265,13 +265,13 @@
   <entry>
     <title type="html"><![CDATA[Lambda Calculus Interpreter and Benefits of Ugliness]]></title>
     <link href="http://j-wang.net/blog/2013/07/10/lambda-calculus-interpreter-and-benefits-of-ugliness/"/>
-    <updated>2013-07-10T23:19:00-04:00</updated>
+    <updated>2013-07-10T23:19:00-07:00</updated>
     <id>http://j-wang.net/blog/2013/07/10/lambda-calculus-interpreter-and-benefits-of-ugliness</id>
     <content type="html"><![CDATA[<p>For the past week, I&rsquo;ve been working on a lambda calculus interpreter (<a href="https://github.com/j-wang/untyped-lambda-calculus-interpreter">Github</a>) in order to try to better understand the concepts in lambda calculus. It&rsquo;s been a great experience, especially since I&rsquo;ve been coding it in Python. Normally, if I were writing the interpreter in a language like SML or Haskell, I would rely heavily on pattern-matching.</p>
 
 <p>Using pattern-matching is a pretty natural fit for creating an interpreter, given the operations involved in lexing, parsing, and reduction/evaluation &mdash; specifically, handling a particular encountered block depending on the token or keyword/structure encountered.<!-- more --> An example of this idea implemented in a Haskell lexer is below:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -312,7 +312,7 @@
 
 <p>If I were to translate this code literally to Python, I would enter <code>elif</code> hell, since Python has neither pattern matching or even case expressions. Although beauty is in the eye of the beholder, a massive block of <code>elif</code>s is not what I consider beautiful code. For such a small codeblock, it isn&rsquo;t too bad, but even so, it looks verbose when in Python.</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -369,7 +369,7 @@
 
 <p>However, this type of ugliness does comes with an advantage when trying a learn a concept. The Haskell version actually has a lot of code repetition which is made tolerable and even pleasant through pattern-matching. Being forced to think more cleverly about how to express one&rsquo;s ideas in a succinct way to counter that ugliness can give one deeper insight into what&rsquo;s actually going on. For example, the below code more explicitly acknowledges the code repetition and handles the <code>for</code> skipping-ahead challenge in a cleaner way (to my eyes), by accumulating characters when the current character is not one of the special delimiters and clearing it when it reaches one of those delimiters.</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -419,7 +419,7 @@
   <entry>
     <title type="html"><![CDATA[Hacker School Activity Log: Jun 21st - 28th]]></title>
     <link href="http://j-wang.net/blog/2013/06/30/hacker-school-activity-log-jun-21st-28th/"/>
-    <updated>2013-06-30T23:50:00-04:00</updated>
+    <updated>2013-06-30T23:50:00-07:00</updated>
     <id>http://j-wang.net/blog/2013/06/30/hacker-school-activity-log-jun-21st-28th</id>
     <content type="html"><![CDATA[<p>I only started this log last week, but figured it would be helpful to start tracking more of what I do at Hacker School, apart from my bigger projects. As a side benefit, it might give some of the people who have asked me what I&rsquo;m doing at Hacker School some insight into what a typical day might be like &mdash; though do keep in mind I&rsquo;ve likely not captured literally every single thing and this particular week was more chaotic and scattered than average.</p>
 
@@ -539,7 +539,7 @@
   <entry>
     <title type="html"><![CDATA[AI for Tic-Tac-Toe]]></title>
     <link href="http://j-wang.net/blog/2013/06/21/ai-for-tic-tac-toe/"/>
-    <updated>2013-06-21T20:28:00-04:00</updated>
+    <updated>2013-06-21T20:28:00-07:00</updated>
     <id>http://j-wang.net/blog/2013/06/21/ai-for-tic-tac-toe</id>
     <content type="html"><![CDATA[<p>As part of my Hacker School application, I wrote a simple <a href="https://github.com/j-wang/hacker-school/blob/master/tictactoe.py">Tic-Tac-Toe application</a> for my &ldquo;program written from scratch.&rdquo; My choice was driven primarily by the fact that the application itself suggested a Tic-Tac-Toe application. As such, I expected many other people would write Tic-Tac-Toe (I was very right in this regard) and wanted to do something unique. My original ambitious plan was to write an AI for it. Unfortunately, I had to quickly abandon this plan, since I realized 1) I had no idea how I would go about creating one, and 2) I didn&rsquo;t have enough time to figure it out before the application was due. As such, I had to settle for infinitely expandable Tic-Tac-Toe (theoretically anyway &mdash; at greater than 15 x 15, it becomes quite visually ugly).</p>
 
@@ -551,7 +551,7 @@
 
 <p>The basic algorithm involved is iterative recursive, which is a pattern that I&rsquo;m finding I like a lot in Python. Iteratively traverse all cells of the grid (breadth):</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -572,7 +572,7 @@
 
 <p>The complicated code below (difficult to read mainly because it builds off of elements of the <code>Grid</code> class that I never exposed or expected to expose) shows the digging. It returns a tuple with win-loss &ldquo;scores&rdquo;, and the moves it took to reach that outcome. The &ldquo;scores&rdquo; are actually a pair of scores: the first is based on the outcome (win/loss/tie &mdash; though wins with fewer moves are given higher scores) and the second is based on how many more ways the AI could have won (and how close it was) vs. the player. Since many outcomes can be the same (win in same number of moves), I use the relative number of paths and closeness to victory as a tiebreaker.</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -637,7 +637,7 @@
 
 <p>The new iterative breadth traversal (the board is now just a flattened list representation of the board, e.g. 0th element is the top left cell, 4th element is the center cell) using a list comprehension:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -658,7 +658,7 @@
 
 <p>And the new recursive depth/comparison function, which sums up 1s for AI wins and -1s for human wins. It chooses max ultimate win outcomes if player is AI, choose min if player is human &mdash; since the game is played to its end conditions, these are perfect inverses of one another:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -689,7 +689,7 @@
 
 <p>These two are helper functions within the <code>next_move</code> method in <code>LeanComputerPlayer</code>. They are kicked off by the last line in the method:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">return</span> <span class="n">solve_tree</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_board</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">XO</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -703,7 +703,7 @@
   <entry>
     <title type="html"><![CDATA[Faces Game Web App]]></title>
     <link href="http://j-wang.net/blog/2013/06/14/faces-game-web-app/"/>
-    <updated>2013-06-14T19:09:00-04:00</updated>
+    <updated>2013-06-14T19:09:00-07:00</updated>
     <id>http://j-wang.net/blog/2013/06/14/faces-game-web-app</id>
     <content type="html"><![CDATA[<p>Last week, while working on my <a href="http://j-wang.net/blog/2013/06/07/first-project-simple-text-editor/">simple text editor</a>, I chatted with fellow Hacker Schoolers about what was actually being used in the industry nowadays for GUIs. The answer I most commonly heard was that the tech world had largely moved on to web (and mobile) apps. No one who I spoke to actually worked on desktop applications. The insight here is quite fascinating to me.</p>
 
@@ -746,7 +746,7 @@
   <entry>
     <title type="html"><![CDATA[First Project: Simple Text Editor]]></title>
     <link href="http://j-wang.net/blog/2013/06/07/first-project-simple-text-editor/"/>
-    <updated>2013-06-07T15:31:00-04:00</updated>
+    <updated>2013-06-07T15:31:00-07:00</updated>
     <id>http://j-wang.net/blog/2013/06/07/first-project-simple-text-editor</id>
     <content type="html"><![CDATA[<p>I have a lot of project ideas that I want to play around with during Hacker School. However, my primary goal &mdash; the thread that ties all of these disparate ideas together &mdash; is to tackle areas of programming that I have never encountered. If an area of programming is &ldquo;magical&rdquo; to me, I want to dispel that magic.</p>
 
@@ -767,7 +767,7 @@
   <entry>
     <title type="html"><![CDATA[Hacker School Begins]]></title>
     <link href="http://j-wang.net/blog/2013/06/03/hacker-school-begins/"/>
-    <updated>2013-06-03T23:34:00-04:00</updated>
+    <updated>2013-06-03T23:34:00-07:00</updated>
     <id>http://j-wang.net/blog/2013/06/03/hacker-school-begins</id>
     <content type="html"><![CDATA[<p>Hacker School has finally begun! The past few days have been a whirlwind of activity. Last week, I finished my last day at work, Liz and I packed up our apartment and got it loaded on a truck for California, loaded the rest of our stuff into the car, moved to NYC, and made an extremely difficult decision which coast we wanted to be on (Liz for her engineering/design programs, and me for business school).</p>
 
@@ -780,7 +780,7 @@
   <entry>
     <title type="html"><![CDATA[Barefoot Running and Half Marathons]]></title>
     <link href="http://j-wang.net/blog/2013/03/28/barefoot-running-and-half-marathons/"/>
-    <updated>2013-03-28T00:00:00-04:00</updated>
+    <updated>2013-03-28T00:00:00-07:00</updated>
     <id>http://j-wang.net/blog/2013/03/28/barefoot-running-and-half-marathons</id>
     <content type="html"><![CDATA[<p>I&rsquo;ve been &ldquo;barefoot running&rdquo; now for about a year at this point. Overall, I think the results have been better than expected &mdash; though my original expectations were pretty low.</p>
 
@@ -815,7 +815,7 @@
   <entry>
     <title type="html"><![CDATA[Strange Prank Idea]]></title>
     <link href="http://j-wang.net/blog/2013/03/18/strange-prank-idea/"/>
-    <updated>2013-03-18T00:00:00-04:00</updated>
+    <updated>2013-03-18T00:00:00-07:00</updated>
     <id>http://j-wang.net/blog/2013/03/18/strange-prank-idea</id>
     <content type="html"><![CDATA[<p>Liz and I were recently up in Philly when I got an idea for a prank that I&rsquo;m a couple years too old for at this point. Liz got into UPenn&rsquo;s Integrated Product Design master&rsquo;s program last week, so we were visiting the city and school to get a sense of whether or not she&rsquo;d like the program.</p>
 
@@ -840,7 +840,7 @@
   <entry>
     <title type="html"><![CDATA[Raspberry Pi for Valentine's Day]]></title>
     <link href="http://j-wang.net/blog/2013/02/22/raspberry-pi-for-valentines-day/"/>
-    <updated>2013-02-22T00:00:00-05:00</updated>
+    <updated>2013-02-22T00:00:00-08:00</updated>
     <id>http://j-wang.net/blog/2013/02/22/raspberry-pi-for-valentines-day</id>
     <content type="html"><![CDATA[<p>For Valentine&rsquo;s Day, I surprised Liz with an iPad Mini. We were selling her current Macbook Air because it just didn&rsquo;t have the power to run Solidworks, Autocad, and other technical programs she&rsquo;d soon need for her engineering/design classes. However, she attached a fair amount of sentimental value to that particular Macbook Air (it was another surprise gift from me). I figured I&rsquo;d at least update the sentimental value with the iPad because it filled her need for a portable device and she had liked the Mini when we visited an Apple Store recently.</p>
 
@@ -858,7 +858,7 @@
   <entry>
     <title type="html"><![CDATA[Sous Vide Porchetta]]></title>
     <link href="http://j-wang.net/blog/2012/10/06/sous-vide-porchetta/"/>
-    <updated>2012-10-06T00:00:00-04:00</updated>
+    <updated>2012-10-06T00:00:00-07:00</updated>
     <id>http://j-wang.net/blog/2012/10/06/sous-vide-porchetta</id>
     <content type="html"><![CDATA[<p>One thing that has bothered me about all of my experimentation with sous vide cooking is that everything that I&rsquo;ve done could technically be done with normal cooking methods. Despite making the best chicken, steak, and poached eggs (or the only poached eggs) that I&rsquo;ve ever made, it was possible for me to still cook this food with more conventional methods. I wanted something that is largely unachievable with any other method.</p>
 
@@ -937,7 +937,7 @@
   <entry>
     <title type="html"><![CDATA[DIY Immersion Circulator]]></title>
     <link href="http://j-wang.net/blog/2012/05/12/diy-immersion-circulator/"/>
-    <updated>2012-05-12T00:00:00-04:00</updated>
+    <updated>2012-05-12T00:00:00-07:00</updated>
     <id>http://j-wang.net/blog/2012/05/12/diy-immersion-circulator</id>
     <content type="html"><![CDATA[<p>For a few months now, I&rsquo;ve been using a $25 deep fryer I found at an estate sale to cook sous vide. It has a bit of a crack and is somewhat old, so I&rsquo;d probably hesitate using it for real deep frying, but I wasn&rsquo;t intending to deep fry with it anyway.</p>
 
@@ -1009,7 +1009,7 @@
   <entry>
     <title type="html"><![CDATA[Theory of Sous Vide]]></title>
     <link href="http://j-wang.net/blog/2012/01/29/theory-of-sous-vide/"/>
-    <updated>2012-01-29T00:00:00-05:00</updated>
+    <updated>2012-01-29T00:00:00-08:00</updated>
     <id>http://j-wang.net/blog/2012/01/29/theory-of-sous-vide</id>
     <content type="html"><![CDATA[<p>This post gets a bit technical and geeky, but I think understanding the theory of cooking is pretty important to cooking well (and consistently). And I can&rsquo;t stop talking about to people in person anyway, so what the heck.</p>
 

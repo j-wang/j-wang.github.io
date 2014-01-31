@@ -4,7 +4,7 @@
   <title><![CDATA[Category: python | James's Blog]]></title>
   <link href="http://j-wang.net/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://j-wang.net/"/>
-  <updated>2013-08-06T11:51:08-04:00</updated>
+  <updated>2014-01-31T02:46:52-08:00</updated>
   <id>http://j-wang.net/</id>
   <author>
     <name><![CDATA[James Wang]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[DBF to SQL]]></title>
     <link href="http://j-wang.net/blog/2013/07/18/dbf-to-sql/"/>
-    <updated>2013-07-18T14:42:00-04:00</updated>
+    <updated>2013-07-18T14:42:00-07:00</updated>
     <id>http://j-wang.net/blog/2013/07/18/dbf-to-sql</id>
     <content type="html"><![CDATA[<p>This is a somewhat less exciting project and announcement, but I put together a utility that helps translate Foxpro DBF to SQLite. In case you don&rsquo;t recognize the word Foxpro, it&rsquo;s a Microsoft DBMS whose final version was released over five years ago (and whose heyday was nearly two decades ago). WomensTrust has a database that I&rsquo;ll be getting a hold of soon, and I wanted to actually be able to use modern tools to work with the data instead of having it trapped in a sunsetted technology. I tested it on a sample database, and it works fine, if a bit messily. It&rsquo;s directly reading and processing the data in the DBF tables. It tried to preserve the format and structure of the tables, but it&rsquo;s not perfect.</p>
 
@@ -27,7 +27,7 @@
   <entry>
     <title type="html"><![CDATA[Fun with Python For Loops]]></title>
     <link href="http://j-wang.net/blog/2013/07/12/fun-with-python-for-loops/"/>
-    <updated>2013-07-12T13:07:00-04:00</updated>
+    <updated>2013-07-12T13:07:00-07:00</updated>
     <id>http://j-wang.net/blog/2013/07/12/fun-with-python-for-loops</id>
     <content type="html"><![CDATA[<p>As mentioned in my <a href="/blog/2013/07/10/lambda-calculus-interpreter-and-benefits-of-ugliness/">last post</a>, while working on a lambda calculus interpreter, I encountered an issue where I wanted to skip ahead in a <em>for</em> loop, but found that I couldn&rsquo;t. Although I initially put it aside, when I was getting a code review on the interpreter from Tom, I remembered the issue again and did some further investigation on the topic.<!-- more --></p>
 
@@ -35,7 +35,7 @@
 
 <p>It turns out that unlike <em>for</em> loops in Java or C++, the index variable (e.g. <code>i</code> in <code>for (int i = 0; i &lt; 10; i++)</code> is drawn directly from the object following the <code>in</code> keyword each time the <em>for</em> loop goes around. As such, changing what the index <code>i</code> references in the equivalent Python loop <code>for i in range(10)</code> won&rsquo;t affect the next round of the <em>for</em> loop (though it will affect anything following the reassignment in the block).</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -68,7 +68,7 @@
 
 <p>Additionally, after you provide Python with an initial reference to an object with an iterable method in a <em>for</em> loop, Python accesses the object directly without referring back to the reference variable passed into the <em>for</em> loop. So, what does this mean? Well, it means that you can&rsquo;t reassign the <em>for</em> loop&rsquo;s iterable object in the middle of a <em>for</em> loop.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -107,7 +107,7 @@
 
 <p>We know what the below code does:</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -135,7 +135,7 @@
 
 <p>However, this does something different:</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -161,7 +161,7 @@
 
 <p>So what happened? Well, let&rsquo;s take a closer look:</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -204,7 +204,7 @@
 
 <p>This method is what I ultimately settled on for parts of my lambda calculus interpreter that needed to skip elements. It made sense since my <em>for</em> loop skipping would always be in the forward direction (I would never need to backtrack in my <em>for</em> loop) and this makes it crystal clear what I&rsquo;m doing.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -242,7 +242,7 @@
 
 <p>On the other hand, if you need to skip around a loop (backwards as well as forwards), it is probably better (and clearer) to just use a while loop.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -288,13 +288,13 @@
   <entry>
     <title type="html"><![CDATA[Lambda Calculus Interpreter and Benefits of Ugliness]]></title>
     <link href="http://j-wang.net/blog/2013/07/10/lambda-calculus-interpreter-and-benefits-of-ugliness/"/>
-    <updated>2013-07-10T23:19:00-04:00</updated>
+    <updated>2013-07-10T23:19:00-07:00</updated>
     <id>http://j-wang.net/blog/2013/07/10/lambda-calculus-interpreter-and-benefits-of-ugliness</id>
     <content type="html"><![CDATA[<p>For the past week, I&rsquo;ve been working on a lambda calculus interpreter (<a href="https://github.com/j-wang/untyped-lambda-calculus-interpreter">Github</a>) in order to try to better understand the concepts in lambda calculus. It&rsquo;s been a great experience, especially since I&rsquo;ve been coding it in Python. Normally, if I were writing the interpreter in a language like SML or Haskell, I would rely heavily on pattern-matching.</p>
 
 <p>Using pattern-matching is a pretty natural fit for creating an interpreter, given the operations involved in lexing, parsing, and reduction/evaluation &mdash; specifically, handling a particular encountered block depending on the token or keyword/structure encountered.<!-- more --> An example of this idea implemented in a Haskell lexer is below:</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -342,7 +342,7 @@
 
 <p>If I were to translate this code literally to Python, I would enter <code>elif</code> hell, since Python has neither pattern matching or even case expressions. Although beauty is in the eye of the beholder, a massive block of <code>elif</code>s is not what I consider beautiful code. For such a small codeblock, it isn&rsquo;t too bad, but even so, it looks verbose when in Python.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -406,7 +406,7 @@
 
 <p>However, this type of ugliness does comes with an advantage when trying a learn a concept. The Haskell version actually has a lot of code repetition which is made tolerable and even pleasant through pattern-matching. Being forced to think more cleverly about how to express one&rsquo;s ideas in a succinct way to counter that ugliness can give one deeper insight into what&rsquo;s actually going on. For example, the below code more explicitly acknowledges the code repetition and handles the <code>for</code> skipping-ahead challenge in a cleaner way (to my eyes), by accumulating characters when the current character is not one of the special delimiters and clearing it when it reaches one of those delimiters.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -463,7 +463,7 @@
   <entry>
     <title type="html"><![CDATA[AI for Tic-Tac-Toe]]></title>
     <link href="http://j-wang.net/blog/2013/06/21/ai-for-tic-tac-toe/"/>
-    <updated>2013-06-21T20:28:00-04:00</updated>
+    <updated>2013-06-21T20:28:00-07:00</updated>
     <id>http://j-wang.net/blog/2013/06/21/ai-for-tic-tac-toe</id>
     <content type="html"><![CDATA[<p>As part of my Hacker School application, I wrote a simple <a href="https://github.com/j-wang/hacker-school/blob/master/tictactoe.py">Tic-Tac-Toe application</a> for my &ldquo;program written from scratch.&rdquo; My choice was driven primarily by the fact that the application itself suggested a Tic-Tac-Toe application. As such, I expected many other people would write Tic-Tac-Toe (I was very right in this regard) and wanted to do something unique. My original ambitious plan was to write an AI for it. Unfortunately, I had to quickly abandon this plan, since I realized 1) I had no idea how I would go about creating one, and 2) I didn&rsquo;t have enough time to figure it out before the application was due. As such, I had to settle for infinitely expandable Tic-Tac-Toe (theoretically anyway &mdash; at greater than 15 x 15, it becomes quite visually ugly).</p>
 
@@ -475,7 +475,7 @@
 
 <p>The basic algorithm involved is iterative recursive, which is a pattern that I&rsquo;m finding I like a lot in Python. Iteratively traverse all cells of the grid (breadth):</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -503,7 +503,7 @@
 
 <p>The complicated code below (difficult to read mainly because it builds off of elements of the <code>Grid</code> class that I never exposed or expected to expose) shows the digging. It returns a tuple with win-loss &ldquo;scores&rdquo;, and the moves it took to reach that outcome. The &ldquo;scores&rdquo; are actually a pair of scores: the first is based on the outcome (win/loss/tie &mdash; though wins with fewer moves are given higher scores) and the second is based on how many more ways the AI could have won (and how close it was) vs. the player. Since many outcomes can be the same (win in same number of moves), I use the relative number of paths and closeness to victory as a tiebreaker.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -575,7 +575,7 @@
 
 <p>The new iterative breadth traversal (the board is now just a flattened list representation of the board, e.g. 0th element is the top left cell, 4th element is the center cell) using a list comprehension:</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -603,7 +603,7 @@
 
 <p>And the new recursive depth/comparison function, which sums up 1s for AI wins and -1s for human wins. It chooses max ultimate win outcomes if player is AI, choose min if player is human &mdash; since the game is played to its end conditions, these are perfect inverses of one another:</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -641,7 +641,7 @@
 
 <p>These two are helper functions within the <code>next_move</code> method in <code>LeanComputerPlayer</code>. They are kicked off by the last line in the method:</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">return</span> <span class="n">solve_tree</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_board</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">XO</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
@@ -654,7 +654,7 @@
   <entry>
     <title type="html"><![CDATA[Faces Game Web App]]></title>
     <link href="http://j-wang.net/blog/2013/06/14/faces-game-web-app/"/>
-    <updated>2013-06-14T19:09:00-04:00</updated>
+    <updated>2013-06-14T19:09:00-07:00</updated>
     <id>http://j-wang.net/blog/2013/06/14/faces-game-web-app</id>
     <content type="html"><![CDATA[<p>Last week, while working on my <a href="/blog/2013/06/07/first-project-simple-text-editor/">simple text editor</a>, I chatted with fellow Hacker Schoolers about what was actually being used in the industry nowadays for GUIs. The answer I most commonly heard was that the tech world had largely moved on to web (and mobile) apps. No one who I spoke to actually worked on desktop applications. The insight here is quite fascinating to me.</p>
 

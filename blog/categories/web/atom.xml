@@ -4,7 +4,7 @@
   <title><![CDATA[Category: web | James's Blog]]></title>
   <link href="http://j-wang.net/blog/categories/web/atom.xml" rel="self"/>
   <link href="http://j-wang.net/"/>
-  <updated>2013-08-06T11:51:08-04:00</updated>
+  <updated>2014-01-31T02:46:52-08:00</updated>
   <id>http://j-wang.net/</id>
   <author>
     <name><![CDATA[James Wang]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Faces Game Web App]]></title>
     <link href="http://j-wang.net/blog/2013/06/14/faces-game-web-app/"/>
-    <updated>2013-06-14T19:09:00-04:00</updated>
+    <updated>2013-06-14T19:09:00-07:00</updated>
     <id>http://j-wang.net/blog/2013/06/14/faces-game-web-app</id>
     <content type="html"><![CDATA[<p>Last week, while working on my <a href="/blog/2013/06/07/first-project-simple-text-editor/">simple text editor</a>, I chatted with fellow Hacker Schoolers about what was actually being used in the industry nowadays for GUIs. The answer I most commonly heard was that the tech world had largely moved on to web (and mobile) apps. No one who I spoke to actually worked on desktop applications. The insight here is quite fascinating to me.</p>
 

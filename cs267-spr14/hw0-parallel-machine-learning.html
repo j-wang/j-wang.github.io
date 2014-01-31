@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>DBF to SQL - James's Blog</title>
+  <title>HW0 - Parallel Machine Learning - James's Blog</title>
   <meta name="author" content="James Wang">
 
   
-  <meta name="description" content="This is a somewhat less exciting project and announcement, but I put together a utility that helps translate Foxpro DBF to SQLite. In case you don& &hellip;">
+  <meta name="description" content="HW0 - Parallel Machine Learning Jan 31st, 2014 Personal Bio: I’m a first year MBA student at UC Berkeley Haas School of Business. For the past few &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://j-wang.net/blog/2013/07/18/dbf-to-sql">
+  <link rel="canonical" href="http://j-wang.net/cs267-spr14/hw0-parallel-machine-learning.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="James's Blog" type="application/atom+xml">
@@ -76,15 +76,67 @@
   <div id="main">
     <div id="content">
       <div>
-<article class="hentry" role="article">
+<article role="article">
   
   <header>
-    
-      <h1 class="entry-title">DBF to SQL</h1>
-    
-    
+    <h1 class="entry-title">HW0 - Parallel Machine Learning</h1>
+    <p class="meta">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-31T01:25:00-08:00" pubdate data-updated="true">Jan 31<span>st</span>, 2014</time></p>
+  </header>
+  
+  <h2>Personal Bio:</h2>
+
+<p>I’m a first year MBA student at UC Berkeley Haas School of Business. For the past few years, I worked at a large, systematic macroeconomic hedge fund and am personally interested in data analysis and distributed computing. Within these areas, I have a particular interest in machine learning and programming paradigms that make asynchronous/parallel computing easier (continuation-passing style, go-channels, etc.).</p>
+
+<p>What I’m hoping to get out of CS267 is a better theoretical grasp of the problems inherent in parallel computing, especially since my own learning in this area has been self-study and “as I’ve encountered it,” and as a result my understanding is patchy. Of course, it’ll also be interesting running programs on a real supercomputer, which I’ve never actually done before.</p>
+
+<h2>Machine Learning</h2>
+
+<h3>Background</h3>
+
+<p>A very broad area where parallel computing is becoming important is machine learning. From my own experience and observations of industry, more and more applications of data analysis and machine learning that used to be run from a single machine now are run from multiple machines and require parallel computing to run in an acceptable amount of time. One of the biggest drivers of the increasing commonality is extremely large datasets, exploded along the lines of data, features, or models. Given the breadth of applications and different algorithms involved, it’s hard to generalize successes, weaknesses, and challenges to the entire field. As such, I will be speaking more broadly about the area, specifically highlighting issues that apply to large classes of machine learning algorithms.</p>
+
+<h3>Parallelization</h3>
+
+<p>On the most basic operational level, machine learning has benefited significantly from the development of standard libraries that efficiently execute computationally intensive operations in parallel/distributed fashion (ScaLAPACK, etc.), and improvements in these libraries. Most machine learning algorithms involve a significant number of linear algebra operations, though certain common algorithms, like linear regression and principal component analysis, are bottlenecked by matrix operations (from a seven/thirteen “dwarves” perspective) and especially benefit from speedups in these libraries (Gray 2009). However, this only addresses basic operations within machine learning.</p>
+
+<p>On a higher level, the primary area of interest in generalizable parallelization techniques in machine learning has been around either applying or reformulating algorithms to fit within a MapReduce framework. There are many algorithms that have “embarrassingly parallel” elements. Chu et al. showed that ten commonly used algorithms could be rewritten in an easily parallelizable form. In an experiment on multicore machines (specifically, an Intel X86 dual-core and Sun Enterprise 6000) using these rewritten parallelized forms, they were able to achieve with locally weighted linear regression (LWLR), k-means, logistic regression, naive Bayes, SVM, ICA, PCA, Gaussian discriminant analysis, EM, and backpropagation in neural networks (Chu, Kim, Lin, Yu, Bradski, Ng, Olukotun 2006).</p>
+
+<p>However, while this work is extremely helpful for some algorithms, computing across the largest datasets is done on distributed systems of thousands of networked machines, which changes the practicality of certain algorithms parallelized in this way. For example, k-means is an iterative algorithm and each MapReduce operation only advances the algorithm by one iteration (Guestrin 2013). While this may have been acceptable in a multicore context where all processors exist on the same machine, this is problematic when hundreds or thousands of iterations are involved, each iteration requiring the completion of a reduce step (bottlenecking the iteration to the slowest process to return), and inevitable delays that occur in network communication.</p>
+
+<p>One example of work trying to deal with this type of delay is in Vowpal Wabbit, a parallelized online learning library. To scale to large datasets, this library uses a feedforward neural network and shards the feature set to individual nodes. This allows each node to do its full computation and learning in parallel and only recombine outputs at the end. Additionally, each feature shard is stateless, which means they can be easily parallelizable and won’t cause cache conflicts on shared memory machines with caches. Unfortunately, this algorithm is no longer the same as the normal online learning descent (Langford 2010). In return though, this algorithm was able to learn on a terascale dataset with trillions of features, billions of training examples, and millions of parameters in an hour using a cluster of 1000 machines (Alekh, Chapelle, Dudik, and Langford 2013). Nevertheless, while there are some interesting techniques that may be generalizable from Vowpal Wabbit, it ultimately is a “hand-adjusted” learning algorithm (like cascade SVM), versus a generalizable parallel programming technique that can be applied to other learning algorithms—which appears to be the general state of this application area, where the most effective tools for parallelization are still relatively low-level and significant speedups often require the creation of entirely new parallel algorithms.</p>
+
+<h2>Citations</h2>
+
+<p><small></p>
+
+<ul>
+<li><p>Agarwal, Alekh, Olivier Chapelle, Miroslav Dudik, and John Langford. &ldquo;A Reliable Effective Terascale Linear Learning System.&rdquo; ArXiv.org. Cornell University, 12 July 2013. Web. <a href="http://arxiv.org/abs/1110.4198">http://arxiv.org/abs/1110.4198</a>.</p></li>
+<li><p>Chu, Chen-Tao, Sang Kyun Kim, Yi-An Lin, YuanYuan Yu, Gary Bradski, Andrew Y. Ng, and Kunle Olukotun. &ldquo;Map-Reduce for Machine Learning on Multicore.&rdquo; Neural Information Processing Systems Foundation 19 (2006): n. pag. Web. <a href="http://books.nips.cc/papers/files/nips19/NIPS2006_0725.pdf">http://books.nips.cc/papers/files/nips19/NIPS2006_0725.pdf</a>.</p></li>
+<li><p>Gray, Alex. &ldquo;Large-Scale Machine Learning: The Problems, Algorithms, and Challenges.&rdquo; Proc. of NIPS 2009 (Neural Information Processing Systems), Hyatt Regency Vancouver, Vancouver, BC, Canada. N.p., n.d. Web. <a href="http://videolectures.net/nipsworkshops09_gray_lsml/">http://videolectures.net/nipsworkshops09_gray_lsml/</a>.</p></li>
+<li><p>Guestrin, Carlos. &ldquo;Parallel K-Means on Map-Reduce.&rdquo; Lecture. 31 Jan. 2013. Web. <a href="http://courses.cs.washington.edu/courses/cse599c1/13wi/slides/mapreduce-kmeans.pdf">http://courses.cs.washington.edu/courses/cse599c1/13wi/slides/mapreduce-kmeans.pdf</a>.</p></li>
+<li><p>Langford, John. &ldquo;A Method for Parallel Online Learning.&rdquo; Proc. of MMDS 2010 (Workshop on Algorithms for Modern Massive Data Sets), Stanford, CA. N.p., n.d. Web. <a href="http://www.stanford.edu/group/mmds/slides2010/Langford.pdf">http://www.stanford.edu/group/mmds/slides2010/Langford.pdf</a>.</p></li>
+</ul>
+
+
+<p></small></p>
+
+  
+    <footer>
       <p class="meta">
         
+        
 
 
 
@@ -96,56 +148,13 @@
   
 
 
-<time datetime="2013-07-18T14:42:00-07:00" pubdate data-updated="true">Jul 18<span>th</span>, 2013</time>
-        
-           | <a href="#disqus_thread"
-             data-disqus-identifier="http://j-wang.net">Comments</a>
+<time datetime="2014-01-31T01:25:00-08:00" pubdate data-updated="true">Jan 31<span>st</span>, 2014</time>
         
       </p>
-    
-  </header>
-
-
-<div class="entry-content"><p>This is a somewhat less exciting project and announcement, but I put together a utility that helps translate Foxpro DBF to SQLite. In case you don&rsquo;t recognize the word Foxpro, it&rsquo;s a Microsoft DBMS whose final version was released over five years ago (and whose heyday was nearly two decades ago). WomensTrust has a database that I&rsquo;ll be getting a hold of soon, and I wanted to actually be able to use modern tools to work with the data instead of having it trapped in a sunsetted technology. I tested it on a sample database, and it works fine, if a bit messily. It&rsquo;s directly reading and processing the data in the DBF tables. It tried to preserve the format and structure of the tables, but it&rsquo;s not perfect.</p>
-
-<p>I haven&rsquo;t tested the script with any other dialects of SQL, but since I&rsquo;m just gluing together a Python dbf library and SQLAlchemy, it should require minimal effort to adapt it (though once you&rsquo;ve translated DBF to SQLite, there are far better tools available for getting it into other dialects of SQL). The code is <a href="https://github.com/j-wang/dbf_to_sql">here</a>.</p>
-</div>
-
-
-  <footer>
-    <p class="meta">
       
+        <div class="sharing">
   
-
-<span class="byline author vcard">Posted by <span class="fn">James Wang</span></span>
-
-      
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-18T14:42:00-07:00" pubdate data-updated="true">Jul 18<span>th</span>, 2013</time>
-      
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/hacker-school/'>hacker school</a>, <a class='category' href='/blog/categories/programming/'>programming</a>, <a class='category' href='/blog/categories/python/'>python</a>
-  
-</span>
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://j-wang.net/blog/2013/07/18/dbf-to-sql/" data-via="Avantos" data-counturl="http://j-wang.net/blog/2013/07/18/dbf-to-sql/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://j-wang.net/cs267-spr14/hw0-parallel-machine-learning.html" data-via="Avantos" data-counturl="http://j-wang.net/cs267-spr14/hw0-parallel-machine-learning.html" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -155,14 +164,9 @@
   
 </div>
 
-    
-    <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/07/12/fun-with-python-for-loops/" title="Previous Post: Fun with Python For Loops">&laquo; Fun with Python For Loops</a>
-      
-      
-    </p>
-  </footer>
+    </footer>
+  
 </article>
 
   <section>
@@ -291,8 +295,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://j-wang.net/blog/2013/07/18/dbf-to-sql/';
-        var disqus_url = 'http://j-wang.net/blog/2013/07/18/dbf-to-sql/';
+        var disqus_identifier = 'http://j-wang.net/cs267-spr14/hw0-parallel-machine-learning.html';
+        var disqus_url = 'http://j-wang.net/cs267-spr14/hw0-parallel-machine-learning.html';
         var disqus_script = 'embed.js';
       
     (function () {
